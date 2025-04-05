@@ -59,17 +59,17 @@
   
     const ldconfig = {
       light: {
-        smallSrc: 'https://cdn.jsdmirror.com/gh/txfmk/tx-pic/picture/image-20250405025058283.png', //浅色模式 小图链接 尽可能配置小于100k的图片 
-        largeSrc: 'https://cdn.jsdmirror.com/gh/txfmk/tx-pic/picture/image-20250405025058283.png', //浅色模式 大图链接 最终显示的图片
-        mobileSmallSrc: 'https://cdn.jsdmirror.com/gh/txfmk/tx-pic/picture/image-20250405025058283.png', //手机端浅色小图链接 尽可能配置小于100k的图片
-        mobileLargeSrc: 'https://cdn.jsdmirror.com/gh/txfmk/tx-pic/picture/image-20250405025058283.png', //手机端浅色大图链接 最终显示的图片
+        smallSrc: 'https://cdn.jsdelivr.net/gh/txfmk/tx-pic/picture/image-20250405025058283_1.png', //浅色模式 小图链接 尽可能配置小于100k的图片 
+        largeSrc: 'https://cdn.jsdelivr.net/gh/txfmk/tx-pic/picture/image-20250405025058283_1.png', //浅色模式 大图链接 最终显示的图片
+        mobileSmallSrc: 'https://cdn.jsdelivr.net/gh/txfmk/tx-pic/picture/image-20250405025058283_1.png', //手机端浅色小图链接 尽可能配置小于100k的图片
+        mobileLargeSrc: 'https://cdn.jsdelivr.net/gh/txfmk/tx-pic/picture/image-20250405025058283_1.png', //手机端浅色大图链接 最终显示的图片
         enableRoutes: ['/'],
         },
       dark: {
-        smallSrc: 'https://cdn.jsdmirror.com/gh/txfmk/tx-pic/picture/image-20250405025058283.png', //深色模式 小图链接 尽可能配置小于100k的图片 
-        largeSrc: 'https://cdn.jsdmirror.com/gh/txfmk/tx-pic/picture/image-20250405025058283.png', //深色模式 大图链接 最终显示的图片
-        mobileSmallSrc: 'https://cdn.jsdmirror.com/gh/txfmk/tx-pic/picture/image-20250405025058283.png', //手机端深色模式小图链接 尽可能配置小于100k的图片
-        mobileLargeSrc: 'https://cdn.jsdmirror.com/gh/txfmk/tx-pic/picture/image-20250405025058283.png', //手机端深色大图链接 最终显示的图片
+        smallSrc: 'https://cdn.jsdelivr.net/gh/txfmk/tx-pic/picture/image-20250405025058283_1.png', //深色模式 小图链接 尽可能配置小于100k的图片 
+        largeSrc: 'https://cdn.jsdelivr.net/gh/txfmk/tx-pic/picture/image-20250405025058283_1.png', //深色模式 大图链接 最终显示的图片
+        mobileSmallSrc: 'https://cdn.jsdelivr.net/gh/txfmk/tx-pic/picture/image-20250405025058283_1.png', //手机端深色模式小图链接 尽可能配置小于100k的图片
+        mobileLargeSrc: 'https://cdn.jsdelivr.net/gh/txfmk/tx-pic/picture/image-20250405025058283_1.png', //手机端深色大图链接 最终显示的图片
         enableRoutes: ['/'],
         },
       };
