@@ -1,0 +1,488 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>php反序列化 | txfmk</title><meta name="keywords" content="web,php反序列化"><meta name="author" content="txfmk"><meta name="copyright" content="txfmk"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="php反序列化"><meta name="application-name" content="php反序列化"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="php反序列化"><meta property="og:url" content="http://example.com/2025/04/07/php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/index.html"><meta property="og:site_name" content="txfmk"><meta property="og:description" content="程序开发：面向过程&amp;amp;面向对象面向过程123面向过程是一种以“整体事件”为中心的编程思想，编程的时候把解决问题的步骤分析出来，然后用函数把这些步骤实现，在一步一步的具体步骤中再按顺序调用函数。    面向对象123456面向对象是一种以“对象”为中心的编程思想，把要解决的问题分解成各个“对象”"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://cdn.jsdmirror.com/gh/txfmk/tx-pic/picture/1743829693941.jpg"><meta property="article:author" content="txfmk"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://cdn.jsdmirror.com/gh/txfmk/tx-pic/picture/1743829693941.jpg"><meta name="description" content="程序开发：面向过程&amp;amp;面向对象面向过程123面向过程是一种以“整体事件”为中心的编程思想，编程的时候把解决问题的步骤分析出来，然后用函数把这些步骤实现，在一步一步的具体步骤中再按顺序调用函数。    面向对象123456面向对象是一种以“对象”为中心的编程思想，把要解决的问题分解成各个“对象”"><link rel="shortcut icon" href="https://cdn.jsdmirror.com/gh/txfmk/tx-pic/picture/32.jpg"><link rel="canonical" href="http://example.com/2025/04/07/php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/"><link rel="preconnect" href="//cdn.smartcis.cn"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="manifest" href="/manifest.json"/><meta name="msapplication-TileColor" content="var(--anzhiyu-main)"/><link rel="mask-icon" href="/img/siteicon/apple-icon-180.png" color="#5bbad5"/><link rel="apple-touch-icon" sizes="180x180" href="/img/siteicon/apple-icon-180.png"/><link rel="apple-touch-icon-precomposed" sizes="180x180" href="/img/siteicon/apple-icon-180.png"/><link rel="icon" type="image/png" sizes="32x32" href="/img/siteicon/32.png"/><link rel="icon" type="image/png" sizes="16x16" href="/img/siteicon/16.png"/><link rel="bookmark" href="/img/siteicon/apple-icon-180.png"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2048-2732.jpg" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2732-2048.jpg" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1668-2388.jpg" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2388-1668.jpg" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1536-2048.jpg" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2048-1536.jpg" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1668-2224.jpg" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2224-1668.jpg" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1620-2160.jpg" media="(device-width: 810px) and (device-height: 1080px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2160-1620.jpg" media="(device-width: 810px) and (device-height: 1080px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1290-2796.jpg" media="(device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2796-1290.jpg" media="(device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1179-2556.jpg" media="(device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2556-1179.jpg" media="(device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1284-2778.jpg" media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2778-1284.jpg" media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1170-2532.jpg" media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2532-1170.jpg" media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1125-2436.jpg" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2436-1125.jpg" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1242-2688.jpg" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2688-1242.jpg" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-828-1792.jpg" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1792-828.jpg" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1242-2208.jpg" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2208-1242.jpg" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-750-1334.jpg" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1334-750.jpg" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-640-1136.jpg" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1136-640.jpg" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.smartcis.cn/npm/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.smartcis.cn/npm/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/swiper/swiper.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: undefined,
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: undefined,
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: {"skills":null},
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: txfmk","link":"链接: ","source":"来源: txfmk","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.smartcis.cn/npm/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.smartcis.cn/npm/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'txfmk',
+  title: 'php反序列化',
+  postAI: '',
+  pageFillDescription: '程序开发：面向过程amp面向对象, 面向过程, 面向对象, 对象的三个特征：对象的行为对象的形态对象的表示, 类的定义, 类的结构, 类的内容, 1.反序列化之后的内容为一个对象, 2.反序列化生成的对象里的值由反序列化里的值提供；与原有类预定义的值无关, 3.反序列化不触发类的成员方法；需要调用方法后才能触发, , 魔术方法, 什么是魔术方法, 魔术方法的作用, _construct(), __destruct(), __sleep(), __wakeup(), __toString(), __invoke(), __call(), callStatic(), get(), set(), isset(), unset(), clone(), 魔术方法触发前提：魔术方法所在类（或对象）被调用, POP链, POC编写, 字符串逃逸基础, 反序列化分隔符, 属性逃逸, 是字符还是格式符号是由字符串长度来判断的, 在前面字符串没有问题的情况下}是反序列化结束符后面的字符串不影响反序列化结果, 反序列化字符串减少逃逸：多逃逸出一个成员属性第一个字符串减少吃掉有效代码在第二个字符串构造代码, 反序列化字符串增多逃逸：构造出一个逃逸成员属性第一个字符串增多吐出多余代码把多余位代码构造成逃逸的成员属性, 反序列化漏洞, CVE-2016-7124(PHP5lt5.6.25PHP7lt7.0.10), , 序列化引用, session反序列化漏洞, 存储数据的常用三种格式, PHP session反序列化漏洞, phar反序列化漏洞, phar结构程序开发面向过程面向对象面向过程面向过程是一种以整体事件为中心的编程思想编程的时候把解决问题的步骤分析出来然后用函数把这些步骤实现在一步一步的具体步骤中再按顺序调用函数面向对象面向对象是一种以对象为中心的编程思想把要解决的问题分解成各个对象对象是一个由信息及对信息进行处理的描述所组成的整体是对现实世界的抽象对象的三个特征对象的行为对象的形态对象的表示类的定义类的结构类定义类名定义成员变量属性定义成员函数方法成员变量声明成员函数声明类的内容定义类类名声明成员变量为一种修饰符声明成员函数方法使用预定义调用成员变量成员函数传参可直接调用反序列化之后的内容为一个对象反序列化生成的对象里的值由反序列化里的值提供与原有类预定义的值无关反序列化不触发类的成员方法需要调用方法后才能触发反序列化的作用将序列化后的参数还原成实例化的对象魔术方法什么是魔术方法一个预定义好的在特定情况下自动触发的行为方法魔术方法的作用反序列化漏洞的成因反序列化过程中接收的值字符串可控通过更改这个值字符串得到所需要的代码通过调用方法触发代码执行魔术方法在特定条件下自动调用相关方法最终导致触发代码构造函数在实例化一个对象的时候首先会去自动执行的一个方法实例化对象时触发构造函数触发时机实例化对象功能提前清理不必要内容参数非必要返回值析构函数在对象的所有引用被删除或者当对象被显式销毁时执行的魔术方法实例化对象结束后代码运行完会销毁触发析构函数在序列化过程中不会触发在反序列化过程中会触发反序列化得到的是对象用完后会销毁触发析构函数触发时机对象引用完成或对象被销毁功能参数返回值序列化函数会检查类中是否存在一个魔术方法如果存在该方法会先被调用然后才执行序列化操作此功能可以用于清理对象并返回一个包含对象中所有应被序列化的变量名称的数组如果该方法未返回任何内容则被序列化并产生一个级别的错误触发时机序列化之前功能对象被序列化之前触发返回需要被序列化存储的成员属性删除不必要的属性参数成员属性返回值需要被序列化存储的成员属性会检查是否存在一个方法如果存在则会先调用方法预先准备对象需要的资源预先准备对象资源返回常用于反序列化操作中重新建立数据库连接或执行其他初始化操作触发时机反序列化之前功能参数返回值在反序列化之前在反序列化之后表达方式错误导致魔术方法触发常用于链构造触发时机把对象被当成字符串调用功能参数返回值调用对象可以使用或者如果使用或者只能调用字符串的方式去调用对象即把对象当成字符串使用此时自动触发格式表达错误导致魔术方法触发触发时机把对象当成函数调用功能参数返回值触发时机调用一个不存在的方法功能参数个参数传参返回值调用的不存在的方法的名称和参数调用的不存在的方法的名称调用的不存在的方法的参数触发时机静态调用或调用成员常量时使用的方法不存在功能参数个参数传参返回值调用的不存在的方法的名称和参数触发时机调用的成员属性不存在功能参数传参返回值不存在的成员属性的名称触发时机给不存在的成员属性赋值功能参数传参返回值不存在的成员属性的名称和赋的值触发时机对不可访问属性使用或时会被调用功能参数传参返回值不存在的成员属性的名称触发时机对不可访问属性使用时功能参数传参返回值不存在的成员属性的名称触发时机当使用关键字拷贝完成一个对象后新对象会自动调用定义的魔术方法功能参数返回值魔术方法触发前提魔术方法所在类或对象被调用链在反序列化中我们能控制的数据就是对象中的属性值成员变量所以在反序列化中有一种漏洞利用方法叫面向属性编程即链就是利用魔法方法在里面进行多次跳转然后获取敏感数据的一种编写全称中文译作慨念验证在安全界可以理解成漏洞验证程序是一段不完整的程序仅仅是为了证明提出者的观点的一段代码字符串逃逸基础反序列化分隔符反序列化以结束后面的字符串不影响正常的反序列化属性逃逸一般在数据先经过一次再经过在这个中间反序列化的字符串变多或者变少的时候有可能存在反序列化属性逃逸是字符还是格式符号是由字符串长度来判断的在前面字符串没有问题的情况下是反序列化结束符后面的字符串不影响反序列化结果成员属性数量一致成员属性名称长度一致内容长度一致反序列化字符串减少逃逸多逃逸出一个成员属性第一个字符串减少吃掉有效代码在第二个字符串构造代码反序列化字符串增多逃逸构造出一个逃逸成员属性第一个字符串增多吐出多余代码把多余位代码构造成逃逸的成员属性反序列化漏洞漏洞产生原因如果存在方法调用方法前则先调用方法但是序列化字符串中表示对象属性个数的值大于真实的属性个数时会跳过的执行序列化引用构造序列化字符串让的值引用的值反序列化漏洞当被调用或者中为时内部调用会话管理器访问用户被序列化以后存储到指定目录默认为存取数据的格式有多种常用的有三种漏洞产生写入格式和读取格式不一致存储数据的常用三种格式处理器对应的储存格式键名竖线经过函数序列化处理的值经过函数序列化处理的数组键名的长度对应的字符键名经过函数反序列处理的值反序列化漏洞当网站序列化并存储与反序列化并读取的方式不同就可能导致反序列化漏洞的产生反序列化漏洞是开发程序一个应用包括所有的可执行可访问的文件都打包进了一个文件里使得部署过程十分简单而是里类似于的一种打包文件对于或更高版本后缀文件是默认开启支持的可以直接使用它结构文件标识格式为头部信息压缩文件的属性等信息以序列化存储压缩文件的内容签名放在文件末尾协议解析文件时会自动触发对字段的序列化字符串进行反序列化',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-04-07 01:13:51',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/font.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><meta name="generator" content="Hexo 7.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://cdn.jsdmirror.com/gh/txfmk/tx-pic/picture/20241230025422596.jpg"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.smartcis.cn/npm/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.smartcis.cn/npm/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/" accesskey="h"><div class="title">txfmk</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 友链</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友人帐</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" target="_blank"><img class="post-qr-code-img" alt="微信" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" target="_blank"><img class="post-qr-code-img" alt="支付宝" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/hexo/" style="font-size: 1.05rem;">hexo<sup>1</sup></a><a href="/tags/php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" style="font-size: 1.05rem;">php反序列化<sup>1</sup></a><a href="/tags/php%E7%89%B9%E6%80%A7/" style="font-size: 1.05rem;">php特性<sup>2</sup></a><a href="/tags/web/" style="font-size: 1.05rem;">web<sup>3</sup></a><a href="/tags/wp/" style="font-size: 1.05rem;">wp<sup>1</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/04/"><span class="card-archive-list-date">四月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">4</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/web/" itemprop="url">web</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/web/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>web</span></a><a class="article-meta__tags" href="/tags/php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>php反序列化</span></a></span></div></div><h1 class="post-title" itemprop="name headline">php反序列化</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2025-04-06T17:45:27.037Z" title="发表于 2025-04-07 01:45:27">2025-04-07</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2025-04-06T17:13:51.418Z" title="更新于 2025-04-07 01:13:51">2025-04-07</time></span></div><div class="meta-secondline"><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为湖南"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>湖南</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="https://cdn.jsdmirror.com/gh/txfmk/tx-pic/picture/1743829693941.jpg"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="http://example.com/2025/04/07/php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/"><header><a class="post-meta-categories" href="/categories/web/" itemprop="url">web</a><a href="/tags/web/" tabindex="-1" itemprop="url">web</a><a href="/tags/php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" tabindex="-1" itemprop="url">php反序列化</a><h1 id="CrawlerTitle" itemprop="name headline">php反序列化</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">txfmk</span><time itemprop="dateCreated datePublished" datetime="2025-04-06T17:45:27.037Z" title="发表于 2025-04-07 01:45:27">2025-04-07</time><time itemprop="dateCreated datePublished" datetime="2025-04-06T17:13:51.418Z" title="更新于 2025-04-07 01:13:51">2025-04-07</time></header><h4 id="程序开发：面向过程-面向对象"><a href="#程序开发：面向过程-面向对象" class="headerlink" title="程序开发：面向过程&amp;面向对象"></a>程序开发：面向过程&amp;面向对象</h4><h5 id="面向过程"><a href="#面向过程" class="headerlink" title="面向过程"></a>面向过程</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">面向过程是一种以“整体事件”为中心的编程思想，编程的时候把解</span><br><span class="line">决问题的步骤分析出来，然后用函数把这些步骤实现，在一步一步</span><br><span class="line">的具体步骤中再按顺序调用函数。</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">面向对象是一种以“对象”为中心的编程思想，把要解决的问题分解</span><br><span class="line">成各个“对象”；</span><br><span class="line">对象是一个由信息及对信息进行处理的描述所组成的整体，是对现</span><br><span class="line">实世界的抽象。</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h5 id="对象的三个特征：对象的行为，对象的形态，对象的表示"><a href="#对象的三个特征：对象的行为，对象的形态，对象的表示" class="headerlink" title="对象的三个特征：对象的行为，对象的形态，对象的表示"></a>对象的三个特征：对象的行为，对象的形态，对象的表示</h5><h3 id="类的定义"><a href="#类的定义" class="headerlink" title="类的定义"></a>类的定义</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdmirror.com/gh/txfmk/Picturebed/picture/image-20250215215253128.png" alt="image-20250215215253128"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdmirror.com/gh/txfmk/Picturebed/picture/image-20250215215534552.png" alt="image-20250215215534552"></p>
+<h3 id="类的结构"><a href="#类的结构" class="headerlink" title="类的结构"></a>类的结构</h3><p><strong>类</strong>：定义类名、定义成员变量（属性）、定义成员函数（方法）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1   class Class_Name&#123;</span><br><span class="line">2     //成员变量声明</span><br><span class="line">3     //成员函数声明</span><br><span class="line">4    &#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="类的内容"><a href="#类的内容" class="headerlink" title="类的内容"></a>类的内容</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1 class hero&#123;                 定义类（类名）&#123;</span><br><span class="line">2  var $name;                 //声明成员变量</span><br><span class="line">3  var $sex;                  var为一种修饰符</span><br><span class="line">4  function jineng($var1)&#123;    //声明成员函数（方法）</span><br><span class="line">5   echo $this-&gt;name;         使用预定义$this调用成员变量</span><br><span class="line">6   echo $var1;                成员函数传参$var1可直接调用 </span><br><span class="line">7  &#125;</span><br><span class="line">8 &#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdmirror.com/gh/txfmk/Picturebed/picture/image-20250215220028232.png" alt="image-20250215220028232"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdmirror.com/gh/txfmk/Picturebed/picture/image-20250216011414063.png" alt="image-20250216011414063"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdmirror.com/gh/txfmk/Picturebed/picture/image-20250216025351950.png" alt="image-20250216025351950"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdmirror.com/gh/txfmk/Picturebed/picture/image-20250216025457065.png" alt="image-20250216025457065"></p>
+<h3 id="1-反序列化之后的内容为一个对象"><a href="#1-反序列化之后的内容为一个对象" class="headerlink" title="1.反序列化之后的内容为一个对象;"></a>1.反序列化之后的内容为一个对象;</h3><h3 id="2-反序列化生成的对象里的值，由反序列化里的值提供；与原有类预定义的值无关"><a href="#2-反序列化生成的对象里的值，由反序列化里的值提供；与原有类预定义的值无关" class="headerlink" title="2.反序列化生成的对象里的值，由反序列化里的值提供；与原有类预定义的值无关;"></a>2.反序列化生成的对象里的值，由反序列化里的值提供；与原有类预定义的值无关;</h3><h3 id="3-反序列化不触发类的成员方法；需要调用方法后才能触发"><a href="#3-反序列化不触发类的成员方法；需要调用方法后才能触发" class="headerlink" title="3.反序列化不触发类的成员方法；需要调用方法后才能触发;"></a>3.反序列化不触发类的成员方法；需要调用方法后才能触发;</h3><p>反序列化的作用</p>
+<p>将序列化后的参数还原成实例化的对象。</p>
+<h3 id=""><a href="#" class="headerlink" title=""></a><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdmirror.com/gh/txfmk/Picturebed/picture/image-20250216200900324.png" alt="image-20250216200900324"></h3><h2 id="魔术方法"><a href="#魔术方法" class="headerlink" title="魔术方法"></a>魔术方法</h2><h4 id="什么是魔术方法"><a href="#什么是魔术方法" class="headerlink" title="什么是魔术方法"></a>什么是魔术方法</h4><p>一个预定义好的，在特定情况下自动触发的行为方法。</p>
+<h4 id="魔术方法的作用"><a href="#魔术方法的作用" class="headerlink" title="魔术方法的作用"></a>魔术方法的作用</h4><p>反序列化漏洞的成因：反序列化过程中，unserialize()接收的值（字符串）可控;<br>通过更改这个值（字符串），得到所需要的代码;<br>通过调用方法，触发代码执行。</p>
+<p>魔术方法在特定条件下自动调用相关方法，最终导致触发代码。</p>
+<h4 id="construct"><a href="#construct" class="headerlink" title="_construct()"></a>_construct()</h4><p>构造函数，在实例化一个对象的时候，首先会去自动执行的一个方法；</p>
+<p>实例化对象时触发构造函数construct()</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">触发时机：实例化对象</span><br><span class="line">功能：提前清理不必要内容</span><br><span class="line">参数：非必要</span><br><span class="line">返回值：</span><br></pre></td></tr></table></figure>
+
+<h4 id="destruct"><a href="#destruct" class="headerlink" title="__destruct()"></a>__destruct()</h4><p>析构函数，在对象的所有引用被删除或者当对象被显式销毁时执行的魔术方法。</p>
+<p>实例化对象结束后，代码运行完会销毁，触发析构函数destruct()</p>
+<p>在序列化过程中不会触发，</p>
+<p>在反序列化过程中会触发；</p>
+<p>反序列化得到的是对象，用完后会销毁,触发析构函数destruct()</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">触发时机：对象引用完成，</span><br><span class="line">或对象被销毁</span><br><span class="line">功能</span><br><span class="line">参数：</span><br><span class="line">返回值：</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="sleep"><a href="#sleep" class="headerlink" title="__sleep()"></a>__sleep()</h3><p>序列化serialize()函数会检查类中是否存在一个魔术方法sleep(0。</p>
+<p>如果存在，该方法会先被调用，然后才执行序列化操作。</p>
+<p>此功能可以用于清理对象，并返回一个包含对象中所有应被序列化的变量名称的数组。</p>
+<p>如果该方法未返回任何内容，则NULL被序列化，并产生一个E_NOTICE级别的错误。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">触发时机：序列化serialize()之前</span><br><span class="line">功能：对象被序列化之前触发，返回需要被序列化存储的成员属性，删除不必要的属性。</span><br><span class="line">参数：成员属性</span><br><span class="line">返回值：需要被序列化存储的成员属性</span><br></pre></td></tr></table></figure>
+
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdmirror.com/gh/txfmk/Picturebed/picture/image-20250217005633063.png" alt="image-20250217005633063"></p>
+<h4 id="wakeup"><a href="#wakeup" class="headerlink" title="__wakeup()"></a>__wakeup()</h4><p>unserialize()会检查是否存在一个wakeup()方法。如果存在，则会先调用、<br>wakeup()方法，预先准备对象需要的资源。<br>预先准备对象资源，返回od,常用于反序列化操作中重新建立数据库连接或执行其他初始化操作。</p>
+<p>触发时机：反序列化unserialize()之前<br>功能：<br>参数：<br>返回值：<br>_wakeup(0在反序列化unserialize()之前<br>destruct(()在反序列化unserialize()之后</p>
+<h4 id="toString-NaN"><a href="#toString-NaN" class="headerlink" title="__toString()"></a>__toString()</h4><p>表达方式错误导致魔术方法触发</p>
+<p>常用于pop链构造</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">触发时机：把对象被当成字符串调用</span><br><span class="line">功能：</span><br><span class="line">参数：</span><br><span class="line">返回值：</span><br></pre></td></tr></table></figure>
+
+<p>调用对象可以使用print_r或者var_dump<br>如果使用echo或者print.只能调用字符串的方式去调用对象<br>即把对象当成字符串使用，此时自动触发toString()</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdmirror.com/gh/txfmk/Picturebed/picture/image-20250217171946178.png" alt="image-20250217171946178"></p>
+<h3 id="invoke"><a href="#invoke" class="headerlink" title="__invoke()"></a>__invoke()</h3><p>格式表达错误导致魔术方法触发</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">触发时机：把对象当成函数调用</span><br><span class="line">功能：</span><br><span class="line">参数：</span><br><span class="line">返回值：</span><br></pre></td></tr></table></figure>
+
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdmirror.com/gh/txfmk/Picturebed/picture/image-20250217172755124.png" alt="image-20250217172755124"></p>
+<h3 id="call"><a href="#call" class="headerlink" title="__call()"></a>__call()</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[触发时机：调用一个不存在的方法</span><br><span class="line">功能：</span><br><span class="line">参数：2个参数传参$arg1,$arg2</span><br><span class="line">返回值：调用的不存在的方法的名称和参数]()</span><br><span class="line">$arg1,调用的不存在的方法的名称，</span><br><span class="line">$arg2,调用的不存在的方法的参数，</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdmirror.com/gh/txfmk/Picturebed/picture/image-20250217215658364.png" alt="image-20250217215658364"></p>
+<h3 id="callStatic"><a href="#callStatic" class="headerlink" title="callStatic()"></a>callStatic()</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">触发时机：静态调用或调用成员常量时使用</span><br><span class="line">的方法不存在</span><br><span class="line">功能：</span><br><span class="line">参数：2个参数传参Sarg1,5arg2</span><br><span class="line">返回值：调用的不存在的方法的名称和参数</span><br></pre></td></tr></table></figure>
+
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdmirror.com/gh/txfmk/Picturebed/picture/image-20250217220238489.png" alt="image-20250217220238489"></p>
+<h3 id="get"><a href="#get" class="headerlink" title="get()"></a>get()</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">触发时机：调用的成员属性不存在</span><br><span class="line">功能</span><br><span class="line">参数：传参Sarg1</span><br><span class="line">返回值：不存在的成员属性的名称</span><br></pre></td></tr></table></figure>
+
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdmirror.com/gh/txfmk/Picturebed/picture/image-20250218014201171.png" alt="image-20250218014201171"></p>
+<h3 id="set"><a href="#set" class="headerlink" title="set()"></a>set()</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">触发时机：给不存在的成员属性赋值</span><br><span class="line">功能</span><br><span class="line">参数：传参$arg1,$arg2</span><br><span class="line">返回值：不存在的成员属性的名称和赋的值</span><br></pre></td></tr></table></figure>
+
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdmirror.com/gh/txfmk/Picturebed/picture/image-20250218021034378.png" alt="image-20250218021034378"></p>
+<h3 id="isset"><a href="#isset" class="headerlink" title="isset()"></a>isset()</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">触发时机：对不可访问属性使用isset()或empty()时，_isset()会被调用。</span><br><span class="line">功能：</span><br><span class="line">参数：传参$arg1</span><br><span class="line">返回值：不存在的成员属性的名称</span><br></pre></td></tr></table></figure>
+
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdmirror.com/gh/txfmk/Picturebed/picture/image-20250218021939555.png" alt="image-20250218021939555"></p>
+<h3 id="unset"><a href="#unset" class="headerlink" title="unset()"></a>unset()</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">触发时机：对不可访问属性使用unset()时</span><br><span class="line">功能：</span><br><span class="line">参数：传参$arg1</span><br><span class="line">返回值：不存在的成员属性的名称</span><br></pre></td></tr></table></figure>
+
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdmirror.com/gh/txfmk/Picturebed/picture/image-20250218022053438.png" alt="image-20250218022053438"></p>
+<h3 id="clone"><a href="#clone" class="headerlink" title="clone()"></a>clone()</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">触发时机：当使用clone关键字拷贝完成一个对象后，新对象会自动调用定义的魔术方法clone()</span><br><span class="line">功能</span><br><span class="line">参数：</span><br><span class="line">返回值：</span><br></pre></td></tr></table></figure>
+
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdmirror.com/gh/txfmk/Picturebed/picture/image-20250218022229206.png" alt="image-20250218022229206"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdmirror.com/gh/txfmk/Picturebed/picture/image-20250218022246322.png" alt="image-20250218022246322"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdmirror.com/gh/txfmk/Picturebed/picture/image-20250218022331129.png" alt="image-20250218022331129"></p>
+<h3 id="魔术方法触发前提：魔术方法所在类（或对象）被调用"><a href="#魔术方法触发前提：魔术方法所在类（或对象）被调用" class="headerlink" title="魔术方法触发前提：魔术方法所在类（或对象）被调用"></a>魔术方法触发前提：魔术方法所在类（或对象）被调用</h3><h3 id="POP链"><a href="#POP链" class="headerlink" title="POP链"></a>POP链</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">在反序列化中，我们能控制的数据就是对象中的属性值（成员变量）所以在PHP反序列化中有一种漏洞利用方法叫&quot;面向属性编程&quot;，即POP(Property Oriented Programming).</span><br><span class="line">POP链就是利用魔法方法在里面进行多次跳转然后获取敏感数据的一种payload。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="POC编写"><a href="#POC编写" class="headerlink" title="POC编写"></a>POC编写</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">POC（全称：Proof of concept)中文译作慨念验证。在安全界可以理解成漏洞验证程序。PoC是一段不完整的程序，仅仅是为了证明提出者的观点的一段代码。</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="字符串逃逸基础"><a href="#字符串逃逸基础" class="headerlink" title="字符串逃逸基础"></a>字符串逃逸基础</h2><h4 id="反序列化分隔符"><a href="#反序列化分隔符" class="headerlink" title="反序列化分隔符"></a>反序列化分隔符</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">反序列化以;&#125;结束，后面的字符串不影响正常的反序列化</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="属性逃逸"><a href="#属性逃逸" class="headerlink" title="属性逃逸"></a>属性逃逸</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">一般在数据先经过一次serialize再经过unserialize,在这个中间反序列化的字符串变多或者变少的时候有可能存在反序列化属性逃逸。</span><br></pre></td></tr></table></figure>
+
+<h4 id="是字符还是格式符号，是由字符串长度来判断的"><a href="#是字符还是格式符号，是由字符串长度来判断的" class="headerlink" title="&quot;是字符还是格式符号，是由字符串长度来判断的"></a><code>&quot;</code>是字符还是格式符号，是由字符串长度来判断的</h4><h4 id="在前面字符串没有问题的情况下，-是反序列化结束符后面的字符串不影响反序列化结果"><a href="#在前面字符串没有问题的情况下，-是反序列化结束符后面的字符串不影响反序列化结果" class="headerlink" title="在前面字符串没有问题的情况下，;}是反序列化结束符后面的字符串不影响反序列化结果"></a>在前面字符串没有问题的情况下，;}是反序列化结束符后面的字符串不影响反序列化结果</h4><p>成员属性数量一致,成员属性名称长度一致，内容长度一致</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdmirror.com/gh/txfmk/Picturebed/picture/image-20250218200818756.png" alt="image-20250218200818756"></p>
+<h3 id="反序列化字符串减少逃逸：多逃逸出一个成员属性第一个字符串减少，吃掉有效代码，在第二个字符串构造代码"><a href="#反序列化字符串减少逃逸：多逃逸出一个成员属性第一个字符串减少，吃掉有效代码，在第二个字符串构造代码" class="headerlink" title="反序列化字符串减少逃逸：多逃逸出一个成员属性第一个字符串减少，吃掉有效代码，在第二个字符串构造代码"></a>反序列化字符串减少逃逸：多逃逸出一个成员属性第一个字符串减少，吃掉有效代码，在第二个字符串构造代码</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdmirror.com/gh/txfmk/Picturebed/picture/image-20250219011809527.png" alt="image-20250219011809527"></p>
+<h3 id="反序列化字符串增多逃逸：构造出一个逃逸成员属性第一个字符串增多，吐出多余代码，把多余位代码构造成逃逸的成员属性"><a href="#反序列化字符串增多逃逸：构造出一个逃逸成员属性第一个字符串增多，吐出多余代码，把多余位代码构造成逃逸的成员属性" class="headerlink" title="反序列化字符串增多逃逸：构造出一个逃逸成员属性第一个字符串增多，吐出多余代码，把多余位代码构造成逃逸的成员属性"></a>反序列化字符串增多逃逸：构造出一个逃逸成员属性第一个字符串增多，吐出多余代码，把多余位代码构造成逃逸的成员属性</h3><h1 id="反序列化漏洞"><a href="#反序列化漏洞" class="headerlink" title="反序列化漏洞"></a>反序列化漏洞</h1><h3 id="CVE-2016-7124-PHP5"><a href="#CVE-2016-7124-PHP5" class="headerlink" title="CVE-2016-7124(PHP5&lt;5.6.25;PHP7&lt;7.0.10)"></a><code>CVE-2016-7124(PHP5&lt;5.6.25</code>;<code>PHP7&lt;7.0.10)</code></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">漏洞产生原因</span><br><span class="line">如果存在wakeup方法，调用unserilize()方法前则先调用wakeup方法，但是序列化字符串中表示对象属性个数的值大于真实的属性个数时，会跳过wakeup()的执行</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="-1"><a href="#-1" class="headerlink" title=""></a></h3><h3 id="序列化引用"><a href="#序列化引用" class="headerlink" title="序列化引用"></a>序列化引用</h3><p>构造序列化字符串，让$enter的值引用$secret的值</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdmirror.com/gh/txfmk/Picturebed/picture/image-20250219202538277.png" alt="image-20250219202538277"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdmirror.com/gh/txfmk/Picturebed/picture/image-20250219202431391.png" alt="image-20250219202431391"></p>
+<h3 id="session反序列化漏洞"><a href="#session反序列化漏洞" class="headerlink" title="session反序列化漏洞"></a>session反序列化漏洞</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">当session start()被调用或者php.ini中session.auto start为1时PHP内部调用会话管理器，访问用户session被序列化以后，存储到指定目录（默认为/tmp)。</span><br></pre></td></tr></table></figure>
+
+<p>存取数据的格式有多种，常用的有三种<br>漏洞产生：写入格式和读取格式不一致</p>
+<h4 id="存储数据的常用三种格式"><a href="#存储数据的常用三种格式" class="headerlink" title="存储数据的常用三种格式"></a>存储数据的常用三种格式</h4><table>
+<thead>
+<tr>
+<th align="center">处理器</th>
+<th>对应的储存格式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>php</code></td>
+<td>键名+竖线+经过serialize()函数序列化处理的值</td>
+</tr>
+<tr>
+<td align="center"><code>php_seialize(php&gt;=5.54)</code></td>
+<td>经过serialize()函数序列化处理的数组</td>
+</tr>
+<tr>
+<td align="center"><code>php_binary</code></td>
+<td>键名的长度对应的ASCII字符+键名+经过serialize()函数反序列处理的值</td>
+</tr>
+</tbody></table>
+<h4 id="PHP-session反序列化漏洞"><a href="#PHP-session反序列化漏洞" class="headerlink" title="PHP session反序列化漏洞"></a>PHP session反序列化漏洞</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">当网站序列化并存储Session,与反序列化并读取Session的方式不同，就可能导致session反序列化漏洞的产生。</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h2 id="phar反序列化漏洞"><a href="#phar反序列化漏洞" class="headerlink" title="phar反序列化漏洞"></a>phar反序列化漏洞</h2><p>JAR是开发Java程序一个应用，包括所有的可执行、可访问的文件，都打包进了一个JAR文件里，使得部署过程十分简单。而PHAR(“Php ARchive”)是PHP里类似于JAR的一种打包文件。对于PHP5.3或更高版本，Phar后缀文件是默认开启支持的，可以直接使用它。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdmirror.com/gh/txfmk/Picturebed/picture/image-20250219224250480.png" alt="image-20250219224250480"></p>
+<h3 id="phar结构"><a href="#phar结构" class="headerlink" title="phar结构"></a>phar结构</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">stub phar文件标识，格式为Xxx&lt;?php xxx;HALT_COMPiLER0;?&gt;;(头部信息)</span><br><span class="line">manifest压缩文件的属性等信息，以序列化存储；</span><br><span class="line">contents压缩文件的内容；</span><br><span class="line">signature签名，放在文件末尾；</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>Phar协议解析文件时，会自动触发对manifest字段的序列化字符串进行反序列化</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.jsdmirror.com/gh/txfmk/Picturebed/picture/image-20250219231636753.png" alt="image-20250219231636753"></p>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src="https://cdn.jsdmirror.com/gh/txfmk/tx-pic/picture/20241230025420729.jpg" title="头像" alt="头像"><img class="post-copyright__author_img_front" src="https://cdn.jsdmirror.com/gh/txfmk/tx-pic/picture/20241230025420729.jpg" title="头像" alt="头像"></a><div class="post-copyright__author_name">txfmk</div><div class="post-copyright__author_desc">听风八百遍，才知是人间</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="http://example.com/2025/04/07/php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('http://example.com/2025/04/07/php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/')">php反序列化</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="http://example.com/2025/04/07/php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=php反序列化&amp;url=http://example.com/2025/04/07/php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/&amp;pic=https://cdn.jsdmirror.com/gh/txfmk/tx-pic/picture/1743829693941.jpg" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">txfmk</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/web/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>web<span class="tagsPageCount">3</span></a><a class="post-meta__box__tags" href="/tags/php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>php反序列化<span class="tagsPageCount">1</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdmirror.com/gh/txfmk/tx-pic/picture/1743829693941.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.smartcis.cn/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.smartcis.cn/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2025/04/07/%E6%90%ADblog/"><img class="prev-cover" src="https://cdn.jsdmirror.com/gh/txfmk/tx-pic/picture/1743829720083.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">hexo和github搭配搭建个人blog</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/2025/04/07/ctfshow%20web(php%E7%89%B9%E6%80%A7wp)/" title="ctfshow—web php特性 89—150（慢慢补）"><img class="cover" src="https://cdn.jsdmirror.com/gh/txfmk/tx-pic/picture/1743829772627.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-04-07</div><div class="title">ctfshow—web php特性 89—150（慢慢补）</div></div></a></div><div><a href="/2025/04/07/php%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/" title="php命令执行."><img class="cover" src="https://cdn.jsdmirror.com/gh/txfmk/tx-pic/picture/1743829758720.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-04-07</div><div class="title">php命令执行.</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info__sayhi" id="author-info__sayhi" onclick="anzhiyu.changeSayHelloText()"></div><div class="author-info-avatar"><img class="avatar-img" src="https://cdn.jsdmirror.com/gh/txfmk/tx-pic/picture/20241230025420729.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-status"><img class="g-status" src="https://cdn.jsdmirror.com/gh/txfmk/tx-pic/picture/%E8%8F%9C%E7%8B%97.png" alt="status"/></div></div><div class="author-info__description">菜菜,带带</div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/"><h1 class="author-info__name">txfmk</h1><div class="author-info__desc">听风八百遍，才知是人间</div></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://github.com/txfmk" target="_blank" title="Github"><i class="anzhiyufont anzhiyu-icon-github"></i></a></div></div></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bullhorn anzhiyu-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来看我的小窝~</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%EF%BC%9A%E9%9D%A2%E5%90%91%E8%BF%87%E7%A8%8B-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1"><span class="toc-number">1.</span> <span class="toc-text">程序开发：面向过程&amp;面向对象</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%9D%A2%E5%90%91%E8%BF%87%E7%A8%8B"><span class="toc-number">1.1.</span> <span class="toc-text">面向过程</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1"><span class="toc-number">2.</span> <span class="toc-text">面向对象</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%B8%89%E4%B8%AA%E7%89%B9%E5%BE%81%EF%BC%9A%E5%AF%B9%E8%B1%A1%E7%9A%84%E8%A1%8C%E4%B8%BA%EF%BC%8C%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%BD%A2%E6%80%81%EF%BC%8C%E5%AF%B9%E8%B1%A1%E7%9A%84%E8%A1%A8%E7%A4%BA"><span class="toc-number">2.1.</span> <span class="toc-text">对象的三个特征：对象的行为，对象的形态，对象的表示</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-number"></span> <span class="toc-text">类的定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E7%9A%84%E7%BB%93%E6%9E%84"><span class="toc-number"></span> <span class="toc-text">类的结构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B1%BB%E7%9A%84%E5%86%85%E5%AE%B9"><span class="toc-number">1.</span> <span class="toc-text">类的内容</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E4%B9%8B%E5%90%8E%E7%9A%84%E5%86%85%E5%AE%B9%E4%B8%BA%E4%B8%80%E4%B8%AA%E5%AF%B9%E8%B1%A1"><span class="toc-number"></span> <span class="toc-text">1.反序列化之后的内容为一个对象;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E7%94%9F%E6%88%90%E7%9A%84%E5%AF%B9%E8%B1%A1%E9%87%8C%E7%9A%84%E5%80%BC%EF%BC%8C%E7%94%B1%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E9%87%8C%E7%9A%84%E5%80%BC%E6%8F%90%E4%BE%9B%EF%BC%9B%E4%B8%8E%E5%8E%9F%E6%9C%89%E7%B1%BB%E9%A2%84%E5%AE%9A%E4%B9%89%E7%9A%84%E5%80%BC%E6%97%A0%E5%85%B3"><span class="toc-number"></span> <span class="toc-text">2.反序列化生成的对象里的值，由反序列化里的值提供；与原有类预定义的值无关;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8D%E8%A7%A6%E5%8F%91%E7%B1%BB%E7%9A%84%E6%88%90%E5%91%98%E6%96%B9%E6%B3%95%EF%BC%9B%E9%9C%80%E8%A6%81%E8%B0%83%E7%94%A8%E6%96%B9%E6%B3%95%E5%90%8E%E6%89%8D%E8%83%BD%E8%A7%A6%E5%8F%91"><span class="toc-number"></span> <span class="toc-text">3.反序列化不触发类的成员方法；需要调用方法后才能触发;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number"></span> <span class="toc-text"></span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95"><span class="toc-number"></span> <span class="toc-text">魔术方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">什么是魔术方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-number">2.</span> <span class="toc-text">魔术方法的作用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#construct"><span class="toc-number">3.</span> <span class="toc-text">_construct()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#destruct"><span class="toc-number">4.</span> <span class="toc-text">__destruct()</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sleep"><span class="toc-number"></span> <span class="toc-text">__sleep()</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#wakeup"><span class="toc-number">1.</span> <span class="toc-text">__wakeup()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#toString-NaN"><span class="toc-number">2.</span> <span class="toc-text">__toString()</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#invoke"><span class="toc-number"></span> <span class="toc-text">__invoke()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#call"><span class="toc-number"></span> <span class="toc-text">__call()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#callStatic"><span class="toc-number"></span> <span class="toc-text">callStatic()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#get"><span class="toc-number"></span> <span class="toc-text">get()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#set"><span class="toc-number"></span> <span class="toc-text">set()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#isset"><span class="toc-number"></span> <span class="toc-text">isset()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#unset"><span class="toc-number"></span> <span class="toc-text">unset()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#clone"><span class="toc-number"></span> <span class="toc-text">clone()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95%E8%A7%A6%E5%8F%91%E5%89%8D%E6%8F%90%EF%BC%9A%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95%E6%89%80%E5%9C%A8%E7%B1%BB%EF%BC%88%E6%88%96%E5%AF%B9%E8%B1%A1%EF%BC%89%E8%A2%AB%E8%B0%83%E7%94%A8"><span class="toc-number"></span> <span class="toc-text">魔术方法触发前提：魔术方法所在类（或对象）被调用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#POP%E9%93%BE"><span class="toc-number"></span> <span class="toc-text">POP链</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#POC%E7%BC%96%E5%86%99"><span class="toc-number"></span> <span class="toc-text">POC编写</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%80%83%E9%80%B8%E5%9F%BA%E7%A1%80"><span class="toc-number"></span> <span class="toc-text">字符串逃逸基础</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%88%86%E9%9A%94%E7%AC%A6"><span class="toc-number">1.</span> <span class="toc-text">反序列化分隔符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B1%9E%E6%80%A7%E9%80%83%E9%80%B8"><span class="toc-number">2.</span> <span class="toc-text">属性逃逸</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%98%AF%E5%AD%97%E7%AC%A6%E8%BF%98%E6%98%AF%E6%A0%BC%E5%BC%8F%E7%AC%A6%E5%8F%B7%EF%BC%8C%E6%98%AF%E7%94%B1%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%95%BF%E5%BA%A6%E6%9D%A5%E5%88%A4%E6%96%AD%E7%9A%84"><span class="toc-number">3.</span> <span class="toc-text">&quot;是字符还是格式符号，是由字符串长度来判断的</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%A8%E5%89%8D%E9%9D%A2%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%B2%A1%E6%9C%89%E9%97%AE%E9%A2%98%E7%9A%84%E6%83%85%E5%86%B5%E4%B8%8B%EF%BC%8C-%E6%98%AF%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E7%BB%93%E6%9D%9F%E7%AC%A6%E5%90%8E%E9%9D%A2%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%8D%E5%BD%B1%E5%93%8D%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E7%BB%93%E6%9E%9C"><span class="toc-number">4.</span> <span class="toc-text">在前面字符串没有问题的情况下，;}是反序列化结束符后面的字符串不影响反序列化结果</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%8F%E5%B0%91%E9%80%83%E9%80%B8%EF%BC%9A%E5%A4%9A%E9%80%83%E9%80%B8%E5%87%BA%E4%B8%80%E4%B8%AA%E6%88%90%E5%91%98%E5%B1%9E%E6%80%A7%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%8F%E5%B0%91%EF%BC%8C%E5%90%83%E6%8E%89%E6%9C%89%E6%95%88%E4%BB%A3%E7%A0%81%EF%BC%8C%E5%9C%A8%E7%AC%AC%E4%BA%8C%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9E%84%E9%80%A0%E4%BB%A3%E7%A0%81"><span class="toc-number"></span> <span class="toc-text">反序列化字符串减少逃逸：多逃逸出一个成员属性第一个字符串减少，吃掉有效代码，在第二个字符串构造代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A2%9E%E5%A4%9A%E9%80%83%E9%80%B8%EF%BC%9A%E6%9E%84%E9%80%A0%E5%87%BA%E4%B8%80%E4%B8%AA%E9%80%83%E9%80%B8%E6%88%90%E5%91%98%E5%B1%9E%E6%80%A7%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A2%9E%E5%A4%9A%EF%BC%8C%E5%90%90%E5%87%BA%E5%A4%9A%E4%BD%99%E4%BB%A3%E7%A0%81%EF%BC%8C%E6%8A%8A%E5%A4%9A%E4%BD%99%E4%BD%8D%E4%BB%A3%E7%A0%81%E6%9E%84%E9%80%A0%E6%88%90%E9%80%83%E9%80%B8%E7%9A%84%E6%88%90%E5%91%98%E5%B1%9E%E6%80%A7"><span class="toc-number"></span> <span class="toc-text">反序列化字符串增多逃逸：构造出一个逃逸成员属性第一个字符串增多，吐出多余代码，把多余位代码构造成逃逸的成员属性</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E"><span class="toc-number"></span> <span class="toc-text">反序列化漏洞</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2016-7124-PHP5"><span class="toc-number"></span> <span class="toc-text">CVE-2016-7124(PHP5&lt;5.6.25;PHP7&lt;7.0.10)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#-1"><span class="toc-number"></span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%8F%E5%88%97%E5%8C%96%E5%BC%95%E7%94%A8"><span class="toc-number"></span> <span class="toc-text">序列化引用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#session%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E"><span class="toc-number"></span> <span class="toc-text">session反序列化漏洞</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E6%95%B0%E6%8D%AE%E7%9A%84%E5%B8%B8%E7%94%A8%E4%B8%89%E7%A7%8D%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.</span> <span class="toc-text">存储数据的常用三种格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PHP-session%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E"><span class="toc-number">2.</span> <span class="toc-text">PHP session反序列化漏洞</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#phar%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E"><span class="toc-number"></span> <span class="toc-text">phar反序列化漏洞</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#phar%E7%BB%93%E6%9E%84"><span class="toc-number"></span> <span class="toc-text">phar结构</span></a></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/04/07/php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" title="php反序列化"><img src="https://cdn.jsdmirror.com/gh/txfmk/tx-pic/picture/1743829693941.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="php反序列化"/></a><div class="content"><a class="title" href="/2025/04/07/php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" title="php反序列化">php反序列化</a><time datetime="2025-04-06T17:45:27.037Z" title="发表于 2025-04-07 01:45:27">2025-04-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/04/07/%E6%90%ADblog/" title="hexo和github搭配搭建个人blog"><img src="https://cdn.jsdmirror.com/gh/txfmk/tx-pic/picture/1743829720083.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="hexo和github搭配搭建个人blog"/></a><div class="content"><a class="title" href="/2025/04/07/%E6%90%ADblog/" title="hexo和github搭配搭建个人blog">hexo和github搭配搭建个人blog</a><time datetime="2025-04-06T17:39:28.504Z" title="发表于 2025-04-07 01:39:28">2025-04-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/04/07/php%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/" title="php命令执行."><img src="https://cdn.jsdmirror.com/gh/txfmk/tx-pic/picture/1743829758720.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="php命令执行."/></a><div class="content"><a class="title" href="/2025/04/07/php%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/" title="php命令执行.">php命令执行.</a><time datetime="2025-04-06T17:39:13.978Z" title="发表于 2025-04-07 01:39:13">2025-04-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/04/07/ctfshow%20web(php%E7%89%B9%E6%80%A7wp)/" title="ctfshow—web php特性 89—150（慢慢补）"><img src="https://cdn.jsdmirror.com/gh/txfmk/tx-pic/picture/1743829772627.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ctfshow—web php特性 89—150（慢慢补）"/></a><div class="content"><a class="title" href="/2025/04/07/ctfshow%20web(php%E7%89%B9%E6%80%A7wp)/" title="ctfshow—web php特性 89—150（慢慢补）">ctfshow—web php特性 89—150（慢慢补）</a><time datetime="2025-04-06T16:55:34.666Z" title="发表于 2025-04-07 00:55:34">2025-04-07</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2025 By txfmk</div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">3</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 友链</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友人帐</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/hexo/" style="font-size: 0.88rem;">hexo<sup>1</sup></a><a href="/tags/php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" style="font-size: 0.88rem;">php反序列化<sup>1</sup></a><a href="/tags/php%E7%89%B9%E6%80%A7/" style="font-size: 0.88rem;">php特性<sup>2</sup></a><a href="/tags/web/" style="font-size: 0.88rem;">web<sup>3</sup></a><a href="/tags/wp/" style="font-size: 0.88rem;">wp<sup>1</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="https://cdn.smartcis.cn/npm/hexo-theme-anzhiyu@1.6.14/source/js/utils.js"></script><script src="https://cdn.smartcis.cn/npm/hexo-theme-anzhiyu@1.6.14/source/js/main.js"></script><script src="https://cdn.smartcis.cn/npm/hexo-theme-anzhiyu@1.6.14/source/js/tw_cn.js"></script><script src="https://cdn.smartcis.cn/npm/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.smartcis.cn/npm/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.smartcis.cn/npm/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.smartcis.cn/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("05/04/2025 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2025 By 安知鱼 V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 txfmk 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><div class="js-pjax"><input type="hidden" name="page-type" id="page-type" value="post"></div><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.smartcis.cn/npm/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.smartcis.cn/npm/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><script async data-pjax src="/js/imgloaded.js?1"></script><link rel="stylesheet" href="https://cdn.smartcis.cn/npm/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.smartcis.cn/npm/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.smartcis.cn/npm/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.smartcis.cn/npm/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script charset="UTF-8" src="https://cdn.smartcis.cn/npm/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
