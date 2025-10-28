@@ -60,7 +60,7 @@
   isHome: true,
   isHighlightShrink: false,
   isToc: false,
-  postUpdate: '2025-10-28 09:33:45',
+  postUpdate: '2025-10-28 09:45:18',
   postMainColor: '',
 }</script><noscript><style type="text/css">
   #nav {
@@ -221,7 +221,30 @@ intval()转换数组类型时，不关心数组中的内容，只判断数组中
 类的结构类：定义类名、定义成员变量（属性）、定义成员函数（方法）
 12341   class Class_Name&amp;#123;2     //成员变量声明3     //成员函数声明4    &amp;#125;
 
-类的内容123456781 class hero&amp;#123;                 定义类（类名）&amp;#123;2  var $name;                 //声明成员变量3  var $sex;                  var为一种修饰符4  function jineng($var1)&amp;#123;    //声明成 ...</div><a class="blog-slider__button" href="2025/04/07/php反序列化/" alt="php反序列化">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2025/04/29/ctfshow_web-ssti/" title="ctfshow—web ssti 361-372"><img width="48" height="48" src="https://gcore.jsdelivr.net/gh/txfmk/tx-pic/picture/1743829738020.jpg" alt="图片" onerror="this.src=undefined; this.onerror = null;"></a><div class="blog-slider__content"><span class="blog-slider__code">2025-04-29</span><a class="blog-slider__title" href="2025/04/29/ctfshow_web-ssti/" alt="ctfshow—web ssti 361-372">ctfshow—web ssti 361-372</a><div class="blog-slider__text">ctfshow_web-ssti  （361~372）web 361首先，题目提示，名字就是考点，所以应该是需要我们传一个name的参数
+类的内容123456781 class hero&amp;#123;                 定义类（类名）&amp;#123;2  var $name;                 //声明成员变量3  var $sex;                  var为一种修饰符4  function jineng($var1)&amp;#123;    //声明成 ...</div><a class="blog-slider__button" href="2025/04/07/php反序列化/" alt="php反序列化">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2025/04/07/php命令执行/" title="php命令执行."><img width="48" height="48" src="https://gcore.jsdelivr.net/gh/txfmk/tx-pic/picture/1743829758720.jpg" alt="图片" onerror="this.src=undefined; this.onerror = null;"></a><div class="blog-slider__content"><span class="blog-slider__code">2025-04-07</span><a class="blog-slider__title" href="2025/04/07/php命令执行/" alt="php命令执行.">php命令执行.</a><div class="blog-slider__text">1.通配符？绕过*1234通配符是一种特殊语句，主要有问号(？)和星号(*)，用来模糊搜索文件。?:在linux里面可以进行代替字母。？仅代表单个字符串，但此单字必须存在。*:在linux里面可以进行模糊匹配。*可以代表任何字符串。
+
+
+
+2.单引号、双引号绕过1空字符
+
+
+
+3.反斜杠  \    绕过1把特殊字符去掉功能性，单纯表示为字符串
+
+
+
+*4.特殊变量：$1 到$9、$@和$等1输出为空
+
+
+
+5.内联执行123自定义字符串，再拼接起来a=f;d=ag;c=l;cat aScSd.txt表示cat flag.txt
+
+
+
+6.利用linux中的环境变量1使用环境变量里的字符执行变量
+
+
+绕过空格过滤的方法123456789101112$&amp;#123;IFS&amp;#125;$9&amp;#123;IFS&amp;#125;$IFS$&amp;#123;IFS&amp;#125;$IFS$1 //$1改成$加其他数字貌似都行IFS&amp;lt; &amp;lt;&amp;gt; &amp;#123;cat,flag.php&amp;#125;  //用逗号实现了空格功能，需要用&amp;#123;&amp;#125;括起来%20   (space)%09   (ta ...</div><a class="blog-slider__button" href="2025/04/07/php命令执行/" alt="php命令执行.">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2025/04/29/ctfshow_web-ssti/" title="ctfshow—web ssti 361-372"><img width="48" height="48" src="https://gcore.jsdelivr.net/gh/txfmk/tx-pic/picture/1743829738020.jpg" alt="图片" onerror="this.src=undefined; this.onerror = null;"></a><div class="blog-slider__content"><span class="blog-slider__code">2025-04-29</span><a class="blog-slider__title" href="2025/04/29/ctfshow_web-ssti/" alt="ctfshow—web ssti 361-372">ctfshow—web ssti 361-372</a><div class="blog-slider__text">ctfshow_web-ssti  （361~372）web 361首先，题目提示，名字就是考点，所以应该是需要我们传一个name的参数
 然后就是检查是什么模板
 然后找到可以注入的模块，这里我找到的是os._wrap_close在132,找模块的数字我们可以使用python代码来跑
 直接些payload
@@ -229,16 +252,7 @@ intval()转换数组类型时，不关心数组中的内容，只判断数组中
 
 
 web362首先题目提示有过滤，然后其他没变
-测试发现过滤了一些数字，如3还有2，这样子我们os._wrap_close这个就不能用了，我们可以去找其他模板，如_frozen_importlib_external.FileLoader这个模块，这个模块在94，没有被过滤，这个模块可以使用内建函数eval执行命令，我们直接构造payload（有很多可以这样做的模块，我们可以用py ...</div><a class="blog-slider__button" href="2025/04/29/ctfshow_web-ssti/" alt="ctfshow—web ssti 361-372">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2025/05/21/轩辕杯wp/" title="轩辕杯_web_wp"><img width="48" height="48" src="https://gcore.jsdelivr.net/gh/txfmk/tx-pic/picture/image-20250521214122204.png" alt="图片" onerror="this.src=undefined; this.onerror = null;"></a><div class="blog-slider__content"><span class="blog-slider__code">2025-05-21</span><a class="blog-slider__title" href="2025/05/21/轩辕杯wp/" alt="轩辕杯_web_wp">轩辕杯_web_wp</a><div class="blog-slider__text">ezflask打开提示注入
-输入
-1&amp;#123;&amp;#123;7*7&amp;#125;&amp;#125;
-
-
-ssti注入
-测试了一下，发现点,popen被过滤，我们使用中括号加Unicode编码绕过，然后执行命令的时候，发现flag还有cat也被过滤了，可以使用其他读取文件的命令，比如sort加正则来读取，也可以unicode编码绕过
-1&amp;#123;&amp;#123;()[&amp;quot;__class__&amp;quot;][&amp;quot;__base__&amp;quot;][&amp;quot;__subclasses__&amp;quot;]()[133][&amp;quot;__init__&amp;quot;][&amp;quot;__globals__&amp;quot;][&amp;quot;\u0070\u006f\u0070\u0065\u006e&amp;quot;](&amp;#x27;sort /f*&amp;#x27;)[&amp;quot;read&amp;quot;]()&amp;#125;&amp;#125;
-
-1&amp;#123;&amp;#123;()[&amp;quot;__class__&amp;quot;][&amp;quot;__base__&amp;quot;][&amp;quot;__subclasses__&amp;quot;]()[133] ...</div><a class="blog-slider__button" href="2025/05/21/轩辕杯wp/" alt="轩辕杯_web_wp">详情   </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div><div id="topPostGroup"><div class="top-group-list-item"><div class="post_cover left_radius"><a href="2025/04/07/ctfshow web(php特性wp)/" title="ctfshow—web php特性 89—150（慢慢补）"><span class="top-group-text">荐</span><img class="post_bg" alt="ctfshow—web php特性 89—150（慢慢补）" src="https://gcore.jsdelivr.net/gh/txfmk/tx-pic/picture/1743829772627.jpg" onerror="this.src=undefined; this.onerror = null;"></a></div><div class="top-group-info"><a class="article-title" href="2025/04/07/ctfshow web(php特性wp)/" title="ctfshow—web php特性 89—150（慢慢补）">ctfshow—web php特性 89—150（慢慢补）</a></div></div><div class="top-group-list-item"><div class="post_cover left_radius"><a href="2025/04/07/php反序列化/" title="php反序列化"><span class="top-group-text">荐</span><img class="post_bg" alt="php反序列化" src="https://gcore.jsdelivr.net/gh/txfmk/tx-pic/picture/1743829693941.jpg" onerror="this.src=undefined; this.onerror = null;"></a></div><div class="top-group-info"><a class="article-title" href="2025/04/07/php反序列化/" title="php反序列化">php反序列化</a></div></div><div class="top-group-list-item"><div class="post_cover left_radius"><a href="2025/04/29/ctfshow_web-ssti/" title="ctfshow—web ssti 361-372"><span class="top-group-text">荐</span><img class="post_bg" alt="ctfshow—web ssti 361-372" src="https://gcore.jsdelivr.net/gh/txfmk/tx-pic/picture/1743829738020.jpg" onerror="this.src=undefined; this.onerror = null;"></a></div><div class="top-group-info"><a class="article-title" href="2025/04/29/ctfshow_web-ssti/" title="ctfshow—web ssti 361-372">ctfshow—web ssti 361-372</a></div></div><div class="top-group-list-item"><div class="post_cover left_radius"><a href="2025/05/21/轩辕杯wp/" title="轩辕杯_web_wp"><span class="top-group-text">荐</span><img class="post_bg" alt="轩辕杯_web_wp" src="https://gcore.jsdelivr.net/gh/txfmk/tx-pic/picture/image-20250521214122204.png" onerror="this.src=undefined; this.onerror = null;"></a></div><div class="top-group-info"><a class="article-title" href="2025/05/21/轩辕杯wp/" title="轩辕杯_web_wp">轩辕杯_web_wp</a></div></div><div class="top-group-list-none"></div><div class="top-group-list-none"></div><div class="top-group-list-none"></div></div></div></div></div><script src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/swiper/swiper.min.js"></script><script>function initBlogSlider() {
+测试发现过滤了一些数字，如3还有2，这样子我们os._wrap_close这个就不能用了，我们可以去找其他模板，如_frozen_importlib_external.FileLoader这个模块，这个模块在94，没有被过滤，这个模块可以使用内建函数eval执行命令，我们直接构造payload（有很多可以这样做的模块，我们可以用py ...</div><a class="blog-slider__button" href="2025/04/29/ctfshow_web-ssti/" alt="ctfshow—web ssti 361-372">详情   </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div><div id="topPostGroup"><div class="top-group-list-item"><div class="post_cover left_radius"><a href="2025/04/07/ctfshow web(php特性wp)/" title="ctfshow—web php特性 89—150（慢慢补）"><span class="top-group-text">荐</span><img class="post_bg" alt="ctfshow—web php特性 89—150（慢慢补）" src="https://gcore.jsdelivr.net/gh/txfmk/tx-pic/picture/1743829772627.jpg" onerror="this.src=undefined; this.onerror = null;"></a></div><div class="top-group-info"><a class="article-title" href="2025/04/07/ctfshow web(php特性wp)/" title="ctfshow—web php特性 89—150（慢慢补）">ctfshow—web php特性 89—150（慢慢补）</a></div></div><div class="top-group-list-item"><div class="post_cover left_radius"><a href="2025/04/07/php反序列化/" title="php反序列化"><span class="top-group-text">荐</span><img class="post_bg" alt="php反序列化" src="https://gcore.jsdelivr.net/gh/txfmk/tx-pic/picture/1743829693941.jpg" onerror="this.src=undefined; this.onerror = null;"></a></div><div class="top-group-info"><a class="article-title" href="2025/04/07/php反序列化/" title="php反序列化">php反序列化</a></div></div><div class="top-group-list-item"><div class="post_cover left_radius"><a href="2025/04/07/php命令执行/" title="php命令执行."><span class="top-group-text">荐</span><img class="post_bg" alt="php命令执行." src="https://gcore.jsdelivr.net/gh/txfmk/tx-pic/picture/1743829758720.jpg" onerror="this.src=undefined; this.onerror = null;"></a></div><div class="top-group-info"><a class="article-title" href="2025/04/07/php命令执行/" title="php命令执行.">php命令执行.</a></div></div><div class="top-group-list-item"><div class="post_cover left_radius"><a href="2025/04/29/ctfshow_web-ssti/" title="ctfshow—web ssti 361-372"><span class="top-group-text">荐</span><img class="post_bg" alt="ctfshow—web ssti 361-372" src="https://gcore.jsdelivr.net/gh/txfmk/tx-pic/picture/1743829738020.jpg" onerror="this.src=undefined; this.onerror = null;"></a></div><div class="top-group-info"><a class="article-title" href="2025/04/29/ctfshow_web-ssti/" title="ctfshow—web ssti 361-372">ctfshow—web ssti 361-372</a></div></div><div class="top-group-list-none"></div><div class="top-group-list-none"></div><div class="top-group-list-none"></div></div></div></div></div><script src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/swiper/swiper.min.js"></script><script>function initBlogSlider() {
   var swiper = new Swiper(".blog-slider", {
     passiveListeners: true,
     spaceBetween: 30,
@@ -493,4 +507,4 @@ document.addEventListener('pjax:error', e => {
   if (e.request.status === 404) {
     pjax.loadUrl('/404.html')
   }
-})</script><script charset="UTF-8" src="https://cdn.smartcis.cn/npm/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div><script>"use strict";if("serviceWorker"in navigator){navigator.serviceWorker.register("service-worker.js").then((function(reg){reg.onupdatefound=function(){var installingWorker=reg.installing;installingWorker.onstatechange=function(){switch(installingWorker.state){case"installed":if(navigator.serviceWorker.controller){console.log("New or updated content is available.")}else{console.log("Content is now available offline!")}break;case"redundant":console.error("The installing service worker became redundant.");break}}}}))["catch"]((function(e){console.error("Error during service worker registration:",e)}))}</script></body></html>
+})</script><script charset="UTF-8" src="https://cdn.smartcis.cn/npm/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
